@@ -1,4 +1,122 @@
 <div id="home">
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navStyle" style="background-color:#45a29e">
+        <a class="navbar-brand" href="home.html">
+          <img src="https://image.flaticon.com/icons/svg/167/167018.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+          Small Screen</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="home.html">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-item nav-link" href="search.html">Search</a>
+
+                <a class="nav-item nav-link" href="trending.html">Trending</a>
+                <a class="nav-item nav-link" href="random.html">Random</a>
+                <a class="nav-item nav-link" href="genre.html">Genre</a>
+
+            </div>
+
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+    
+ 
+       
+            <a id="logInButton" class="nav-item nav-link my-2 my-sm-0 " data-toggle="modal" data-target="#logInWindow">Log In</a>
+          
+            <div class="modal fade" id="logInWindow">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- header -->
+                  <div class="modal-header">
+                      <h3 align="center" class="modal-title">Login Form</h3>
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    
+                    
+                  </div>
+                  <!-- body -->
+                  <div class="modal-body">
+                    <form role="form">
+                      <div class="form-group form">
+                       
+
+                        <input id="loginEmail" class="form-control " placeholder="Email" />
+                        
+                        <input id="loginPassword" type="password" class="form-control " placeholder="Password" />
+                        <div class="loader loadingSpinner"></div>
+
+
+                      </div>
+                      
+                          <h5 class="text-danger"id="loginAlerts"></h5>
+                      
+                    </form>
+                  </div>
+                  <!-- footer -->
+                  <div class="modal-footer">
+                    <button id="loginSubmit" type = "submit" data-dismiss="modal" class="btn btn-primary btn-block">Log In</button>
+                    <h6>Create a New Account</h6>
+                    <button id ="signUpButton" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#signUpWindow">Sign Up</button>
+
+                  </div>
+          
+                </div>
+              </div>
+            </div>
+          
+        
+
+       
+
+                <!-- <button id ="signUpButton" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-target="#signUpWindow">Sign Up</button> -->
+              
+                <div class="modal fade" id="signUpWindow">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <!-- header -->
+                      <div class="modal-header">
+                          <h3 class="modal-title" >Sign Up Form</h3>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        
+                      </div>
+                      <!-- body -->
+                      <div class="modal-header">
+                        <form role="form">
+                          <div class="form-group form">
+                            <h6>Email*</h6>
+                            <input id="signUpEmail" class="form-control" placeholder="Email" />
+                            <h6>Password*</h6>
+                            <input id="signUpPassword" class="form-control" type="password" placeholder="Password" />
+                            <h6>Confirm Password*</h6>
+                            <input id="checkSignUpPassword" class="form-control" type="password" placeholder="Password" />
+                            <h5 class="text-danger"id="signUpAlerts"></h5>
+                          </div>
+                        </form>
+                      </div>
+                      <!-- footer -->
+                      <div class="modal-footer">
+                        <button id="signUp" class="btn btn-primary btn-block" data-dismiss="modal">Sign Up</button>
+                        <div class="loader loadingSpinner"></div>
+
+                        
+                      </div>
+              
+                    </div>
+                  </div>
+                </div>
+                <a id="signOut" class="nav-item nav-link my-2 my-sm-0 ">Log Out</a>
+
+              
+            </form>
+</nav>
+    </nav>
+
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
