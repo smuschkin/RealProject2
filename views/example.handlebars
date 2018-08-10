@@ -7,11 +7,31 @@
           <p>
             <strong>ID</strong>: {{example.id}}</p>
           <p>
-          <p>
-            <strong>Text</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
+            <p>
+              <strong>Text</strong>: {{example.text}}</p>
+            <p>
+              <strong>Description:</strong> {{example.description}}</p>
             <a href="/">← Back To Home</a>
+
+            <div class="form-group">
+              <label for="example-description">What have you Eaten today?</label>
+              <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            </div>
+            <button id="submit" class="btn btn-primary float-right">Submit</button>
+            </form>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Meal Time
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Breakfast</a>
+                <a class="dropdown-item" href="#">Lunch</a>
+                <a class="dropdown-item" href="#">Dinner</a>
+                <a class="dropdown-item" href="#">Snack</a>
+                <a class="dropdown-item" href="#">Other</a>
+              </div>
+            </div>
         </div>
       </div>
     </div>
