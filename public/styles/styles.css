@@ -1,3 +1,43 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.list-group-item {
+  line-height: 2.5;
+}
+#recordCalories{
+  background-color: lightgray;
+  border-style: round;
+  border-width: 5px;
+}
+
+.form-control {
+  width: 300px;
+  margin-left: 20px;
+}
+h3 {
+  font-size: 20px;
+  margin-left: 20px;
+
+}
+label {
+  color: darkgreen;
+  margin-left:20px;
+}
+#foodImage {
+  width: 200px;
+  height: 200px;
+}
+#submit {
+  margin-left: 20px;
+}
+h2 {
+  color: green;
+}
+.jumbotron {
+  margin-top: 20px;
+}
+.dropdown {
+  float:center;
+  margin-right: 100px;
+}
