@@ -1,0 +1,71 @@
+<div id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h1>{{msg}}</h1>
+                <h2>My Profile</h2>
+                <form class="clearfix mb-4" action="POST">
+                    <div class="form-group">
+                        <label for="example-text">Category</label>
+                        <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+                    </div>
+                    <div class="form-group">
+                        <label for="example-description">My Goal:</label>
+                        <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+                    </div>
+                    <button id="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+                <h3>Goals:</h3>
+                <ul id="example-list" class="list-group">
+                    {{#each examples}}
+                    <li data-id="{{this.id}}" class="list-group-item">
+                        <a href="example/{{this.id}}">{{this.text}}</a>
+                        <button class="btn btn-danger float-right delete">ｘ</button>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Example</h5>
+                    <p>
+                        <strong>ID</strong>: {{example.id}}</p>
+                    <p>
+                        <p>
+                            <strong>Text</strong>: {{example.text}}</p>
+                        <p>
+                            <strong>Description:</strong> {{example.description}}</p>
+                        <a href="/">← Back To Home</a>
+
+                        <div class="form-group">
+                            <label for="example-description">What have you Eaten today?</label>
+                            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+                        </div>
+                        <button id="submit" class="btn btn-primary float-right">Submit</button>
+                        </form>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Meal Time
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Breakfast</a>
+                                <a class="dropdown-item" href="#">Lunch</a>
+                                <a class="dropdown-item" href="#">Dinner</a>
+                                <a class="dropdown-item" href="#">Snack</a>
+                                <a class="dropdown-item" href="#">Other</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
