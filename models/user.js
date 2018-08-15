@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
         email: {
-            type: Sequelize.STRING(255),
+            type: DataTypes.STRING,
             unique: true,
             validate: {
                 isEmail: true
@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
 
       
     });
+    User.associate = function(models) {
+        User.hasOne(models.User)
+      };
     return User;
   };
   

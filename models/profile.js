@@ -7,6 +7,10 @@ module.exports = function(sequelize, DataTypes) {
       calories: DataTypes.INTEGER
       
     });
+    Profile.associate = function(models) {
+      Profile.belongsTo(models.User)
+    };
+    
     return Profile;
   };
   
