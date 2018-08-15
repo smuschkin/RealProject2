@@ -1,12 +1,9 @@
-// Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $GoalList = $("#goal-list");
-var $updateBtn = $("#update-button");
+var $updateBtn = $("#to-do-list");
 
-
-// The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function (example) {
     return $.ajax({
@@ -40,17 +37,12 @@ var API = {
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function () {
   API.getExamples().then(function (data) {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.text)
         .attr("href", "/example/" + example.id);
-
-      // var $a2 = $("<a>")
-      //   .text(example.text)
-      //   .attr("href", "/example/" + example.id);
 
       var $li = $("<li>")
         .attr({
@@ -59,34 +51,20 @@ var refreshExamples = function () {
         })
         .append($a);
 
-      // var $li2 = $("<li>")
-      //   .attr({
-      //     class: "list-group-item",
-      //     "data-id": example.id
-      //   })
-      //   .append($a2);
-
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
-        .text("Delete!");
-
-      // var $updateBtn = $("<button>")
-      //   .addClass("btn btn-danger float-right")
-      //   .text("Complete!");
+        .text("Completed!");
 
       $li.append($button);
       return $li;
 
-      // $li2.append($updateBtn);
     });
 
-    $GoalList.empty();
-    $GoalList.append($examples);
+    $updateBtn.empty();
+    $updateBtn.append($examples);
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
 var handleFormSubmit = function (event) {
   event.preventDefault();
 
@@ -108,8 +86,6 @@ var handleFormSubmit = function (event) {
   $exampleDescription.val("");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
@@ -119,9 +95,9 @@ var handleDeleteBtnClick = function () {
     refreshExamples();
   });
 };
-// MOVE TO COMPLETED
+
 var handleUpdateBtnClick = function () {
-  // var id = $(this).data("data-id");
+
   var idToUpdate = $(this);
 
   var newStatus = {
@@ -132,8 +108,7 @@ var handleUpdateBtnClick = function () {
     refreshExamples();
   });
 };
-// Add event listeners to the submit and delete buttons
+
 $submitBtn.on("click", handleFormSubmit);
-$GoalList.on("click", ".delete", handleDeleteBtnClick);
-$updateBtn.on("click", handleUpdateBtnClick);
+$updateBtn.on("click", ".delete", handleDeleteBtnClick);
 

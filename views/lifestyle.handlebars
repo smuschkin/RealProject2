@@ -12,10 +12,10 @@
             <label for="example-text">Goal:</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Goal Here">
           </div>
-          <div class="form-group">
+          {{!-- <div class="form-group">
             <label for="example-date">Do by:</label>
             <input type="date" class="form-control" id="example-date" aria-describedby="example-date"></input>
-          </div>
+          </div> --}}
           <div class="form-group">
             <label for="example-description">Description:</label>
             <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Goal Description Here"></textarea>
@@ -23,22 +23,10 @@
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
         <h3>My To-Do List:</h3>
-        <ul id="update-button" class="list-group">
-          {{#each examples}} {{!--
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">Completed!</button>
-          </li> --}} {{/each}}
-        </ul>
-        <br>
-        <h3>My Completed Goals:</h3>
-        <ul id="goal-list" class="list-group">
+        <ul id="to-do-list" class="list-group">
           {{#each examples}} {{/each}}
         </ul>
-        {{!--
-        <li data-id="{{this.id}}" class="list-group-item">
-          <a href="example/{{this.id}}">{{this.text}}</a>
-          <button class="btn btn-danger float-right delete">Delete</button> --}} {{!-- </li> --}}
+        <br>
       </div>
     </div>
   </div>
