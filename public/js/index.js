@@ -1,3 +1,6 @@
+$(document).ready(function (){ 
+  
+
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -109,6 +112,7 @@ var handleUpdateBtnClick = function () {
   });
 };
 
+refreshExamples();
 $submitBtn.on("click", handleFormSubmit);
 $updateBtn.on("click", ".delete", handleDeleteBtnClick);
-
+});
