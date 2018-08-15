@@ -1,8 +1,8 @@
-module.exports = function (sequelize, DataTypes) {
-    var Lifestyle = sequelize.define("Lifestyle", {
-      text: DataTypes.STRING,
-      description: DataTypes.TEXT,
-      status: DataTypes.BOOLEAN
-    });
-    return Lifestyle;
-  };
+module.exports = function(sequelize, DataTypes) {
+  var Lifestyle = sequelize.define("Lifestyle", {
+    goal: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    
+  });
+  return Lifestyle;
+};
