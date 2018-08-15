@@ -37,7 +37,19 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
-  }
+  },
+
+  //users
+  userSignUp: function (user) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/examples",
+      data: JSON.stringify(example)
+    });
+  },
 };
 
 var refreshExamples = function () {

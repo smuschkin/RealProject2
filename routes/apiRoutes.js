@@ -90,6 +90,24 @@ module.exports = function(app) {
         res.json(dbLifestyle);
       });
   });
+
+  app.post("/api/signup", function(req, res){
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password,
+      verifyPassword: req.body.verifyPassword
+    })
+      .then(function(dbSignup) {
+        res.json(dbSignup);
+      });
+  });
+    
+  app.get("/api/signin", function(req, res){
+    db.User.findAll({})
+      .then(function(dbSignIn) {
+        res.json(dbSignIn);
+      });
+  });
   
   
   };
