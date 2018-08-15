@@ -7,10 +7,18 @@ var $submitBtn = $("#submit");
 var $GoalList = $("#goal-list");
 var $updateBtn = $("#to-do-list");
 
-//login buttons
+//login 
 var $signInEmail = $("#loginEmail");
 var $signInPassword = $("#loginPassword");
 var $signInButton = $("#loginSubmitForm");
+
+//signup
+var $signUpEmail = $("#signUpEmail");
+var $signUpPassword = $("#signUpPassword");
+var $signUpPasswordVerify = $("#signUpPasswordVerify");
+var $signUpButton = $("#signUpSubmitForm");
+
+
 
 var API = {
   saveExample: function (example) {
@@ -52,7 +60,17 @@ var API = {
       type: "GET"
 
     });
-  }
+  },
+  userSignUp: function (newUser) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/signup",
+      data: JSON.stringify(newUser)
+    });
+  },
 };
 
 var refreshExamples = function () {
@@ -85,8 +103,7 @@ var refreshExamples = function () {
 
 
 
-var $signInEmail = $("#loginEmail");
-var $signInPassword = $("#loginPassword");
+
 
 //LOGIN FUNCTION
 
@@ -105,6 +122,39 @@ var handleLogin = function (event) {
 
   API.userSignIn(login).then(function () {
     console.log("welcome ")
+  });
+
+  
+};
+
+
+//SIGNIN FUNCTION
+
+var handleSignup = function (event) {
+  event.preventDefault();
+
+  var signup = {
+    email: $signUpEmail.val().trim(),
+    password: $signUpPassword.val().trim(),
+    verifyPassword: $signUpPasswordVerify.val().trim()
+
+  };
+  var login = {
+    email: $signUpEmail.val().trim(),
+    password: $signUpPassword.val().trim()
+  };
+
+
+  // if (!example.goal) {
+  //   alert("You must enter a goal!");
+  //   return;
+  // }
+
+  API.userSignUp(signup).then(function () {
+    console.log("new user created");
+    API.userSignIn(login).then(function () {
+      console.log("welcome " + login.email);
+    });
   });
 
   
@@ -161,8 +211,7 @@ $updateBtn.on("click", ".delete", handleDeleteBtnClick);
 
 
 $signInButton.on("click", handleLogin);
-
-
+$signUpButton.on("click", handleSignup);
 
 
 });
