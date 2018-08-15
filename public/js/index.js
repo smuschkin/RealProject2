@@ -44,7 +44,7 @@ var refreshExamples = function () {
   API.getExamples().then(function (data) {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
-        .text(example.text)
+        .text(example.goal)
         .attr("href", "/example/" + example.id);
 
       var $li = $("<li>")
@@ -72,11 +72,11 @@ var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var example = {
-    text: $exampleText.val().trim(),
+    goal: $exampleText.val().trim(),
     description: $exampleDescription.val().trim()
   };
 
-  if (!example.text) {
+  if (!example.goal) {
     alert("You must enter a goal!");
     return;
   }

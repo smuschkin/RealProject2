@@ -30,19 +30,19 @@ module.exports = function (app) {
   });
 
   app.get("/lifestyle", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Example.findAll({}).then(function (dbLifestyle) {
       res.render("lifestyle", {
         msg: "Welcome!",
-        examples: dbExamples
+        examples: dbLifestyle
       });
     });
   });
 
   app.get("/profile", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Example.findAll({}).then(function (dbProfileGet) {
       res.render("profile", {
         msg: "Welcome!",
-        examples: dbExamples
+        userData: dbProfileGet
       });
     });
   });

@@ -122,7 +122,7 @@
         <h3>Summary of Calories</h3>
         <img src="./js/images/healthyFood.jpg" alt="Fruits" id="foodImage">
         <ul id="example-list" class="list-group">
-            {{#each examples}}
+            {{#each userData}}
             <li data-id="{{this.id}}" class="list-group-item">
                 <a href="example/{{this.id}}">{{this.text}}</a>
                 <button class="btn btn-danger float-right delete">ｘ</button>

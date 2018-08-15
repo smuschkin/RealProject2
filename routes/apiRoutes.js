@@ -29,20 +29,20 @@ module.exports = function(app) {
   });
 
 
-  var db = require("../models");
+ 
 
-  module.exports = function(app) {
-    // Get all examples
+  
+ 
   
   app.post("/api/username/profile/userinfo", function(req, res){
     db.Profile.create({
       name: req.body.name,
-      age: req.body.name,
+      age: req.body.age,
       weight: req.body.weight,
       calorieGoal: req.body.calorieGoal,
       calories: req.body.calories})
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbProfile) {
+        res.json(dbProfile);
       });
   });
   
@@ -96,4 +96,4 @@ module.exports = function(app) {
   
 
 
-};
+
