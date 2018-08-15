@@ -7,6 +7,11 @@ var $submitBtn = $("#submit");
 var $GoalList = $("#goal-list");
 var $updateBtn = $("#to-do-list");
 
+//login buttons
+var $signInEmail = $("#loginEmail");
+var $signInPassword = $("#loginPassword");
+var $signInButton = $("#loginSubmitForm");
+
 var API = {
   saveExample: function (example) {
     return $.ajax({
@@ -40,16 +45,14 @@ var API = {
   },
 
   //users
-  userSignUp: function (user) {
+  userSignIn: function (user) {
     return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+     
+      url: "api/signin",
+      type: "GET"
+
     });
-  },
+  }
 };
 
 var refreshExamples = function () {
@@ -79,6 +82,34 @@ var refreshExamples = function () {
     $updateBtn.append($examples);
   });
 };
+
+
+
+var $signInEmail = $("#loginEmail");
+var $signInPassword = $("#loginPassword");
+
+//LOGIN FUNCTION
+
+var handleLogin = function (event) {
+  event.preventDefault();
+
+  var login = {
+    email: $signInEmail.val().trim(),
+    password: $signInPassword.val().trim()
+  };
+
+  // if (!example.goal) {
+  //   alert("You must enter a goal!");
+  //   return;
+  // }
+
+  API.userSignIn(login).then(function () {
+    console.log("welcome ")
+  });
+
+  
+};
+
 
 var handleFormSubmit = function (event) {
   event.preventDefault();
@@ -127,4 +158,11 @@ var handleUpdateBtnClick = function () {
 refreshExamples();
 $submitBtn.on("click", handleFormSubmit);
 $updateBtn.on("click", ".delete", handleDeleteBtnClick);
+
+
+$signInButton.on("click", handleLogin);
+
+
+
+
 });
