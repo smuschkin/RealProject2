@@ -11,57 +11,95 @@
                         <p class="lead">Healthy Lifestyle User Information.</p>
                     </div>
                 </div>
-                {{!--
-                <h1>{{msg}}: "Reference person's name"</h1>
-                <h2>My Profile</h2>
-                <br> --}}
-                <div id="recordCalories">
-                    <img src="../assets/images/healthyFood.jpg" alt="Fruits" id="foodImage">
-                    <h3>What Have You Eaten Today?- API for Calories</h3>
+                <div id="userInformation">
+                    {{!--
+                    <img src="{{{/assets/images/healthyFood.jpg}}}" alt={{{fruits}}} /> --}}
+                    <img src="./js/images/info_ball.png" alt="Fruits" id="infoImage">
+                    <h3>Enter your Profile Information</h3>
                     <div class="form-group">
-                        <label for="example-description">Enter Food Item and Quantity</label>
-                        <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Feed Me!"></textarea>
+                        <label for="example-description">Age</label>
+                        <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder=""></textarea>
                     </div>
-                    <button id="submit" class="btn btn-primary float-left">Submit</button>
-
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            Meal Time
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Breakfast</a>
-                            <a class="dropdown-item" href="#">Lunch</a>
-                            <a class="dropdown-item" href="#">Dinner</a>
-                            <a class="dropdown-item" href="#">Snack</a>
-                            <a class="dropdown-item" href="#">Other</a>
-                        </div>
+                    <div class="form-group">
+                        <label for="example-description">Weight</label>
+                        <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder=""></textarea>
                     </div>
-                    </form>
-
-                    <br>
-                    <br> {{!--
-                    <button id="submit" class="btn btn-primary float-right">Submit</button>
-                    </form>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            Meal Time
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Breakfast</a>
-                            <a class="dropdown-item" href="#">Lunch</a>
-                            <a class="dropdown-item" href="#">Dinner</a>
-                            <a class="dropdown-item" href="#">Snack</a>
-                            <a class="dropdown-item" href="#">Other</a>
-                        </div> --}}
+                    <div class="form-group">
+                        <label for="example-description">Height</label>
+                        <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder=""></textarea>
+                    </div>
+                    <div class="form-group"></div>
+                    <label for="example-description">Calories (Daily Goal)</label>
+                    <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Feed Me!"></textarea>
+                </div>
+                
+                      <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Meal Time
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Breakfast</a>
+                        <a class="dropdown-item" href="#">Lunch</a>
+                        <a class="dropdown-item" href="#">Dinner</a>
+                        <a class="dropdown-item" href="#">Snack</a>
+                        <a class="dropdown-item" href="#">Other</a>
                     </div>
                 </div>
+                
+
+                <button id="submit" class="btn btn-primary float-left">Submit</button>
+                </div>
+
+            {{!--
+            <h1>{{msg}}: "Reference person's name"</h1>
+            <h2>My Profile</h2>
+            <br> --}}
+
+            <br>
+            <br>
+            <br>
+            {{!-- <form>
+            <div id="recordCalories">
+                {{!--
+                <img src="{{{/assets/images/healthyFood.jpg}}}" alt={{{fruits}}} /> --}}
+                {{!-- <img src="./js/images/healthyFood.jpg" alt="Fruits" id="foodImage">
+                <h3>What Have You Eaten Today?- API for Calories</h3>
+                <div class="form-group">
+                    <label for="example-description">Enter Food Item and Quantity</label>
+                    <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Feed Me!"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="example-description">Enter Food Item and Quantity</label>
+                    <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Feed Me!"></textarea>
+                </div>
+                <button id="submit" class="btn btn-primary float-left">Submit</button>
+            </form>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Meal Time
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Breakfast</a>
+                        <a class="dropdown-item" href="#">Lunch</a>
+                        <a class="dropdown-item" href="#">Dinner</a>
+                        <a class="dropdown-item" href="#">Snack</a>
+                        <a class="dropdown-item" href="#">Other</a>
+                    </div>
+                </div>
+                </form>
+
+                <br>
+                <br>
             </div>
         </div>
     </div>
-
 </div>
+</div>
+
+</div> --}} 
 {{!--
 <form class="clearfix mb-4" action="POST">
     <div class="form-group">
@@ -80,8 +118,9 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Are You On Track </h1>
+        <h1 class="display-4">Are You On Track?</h1>
         <h3>Summary of Calories</h3>
+        <img src="./js/images/healthyFood.jpg" alt="Fruits" id="foodImage">
         <ul id="example-list" class="list-group">
             {{#each examples}}
             <li data-id="{{this.id}}" class="list-group-item">
@@ -90,7 +129,8 @@
             </li>
             {{/each}}
         </ul>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+
+        {{!-- <p class="lead"></p>
         <div class="container">
             <div class="row">
                 <div class="col-8 offset-2">
@@ -103,15 +143,15 @@
                                 <p>
                                     <strong>Text</strong>: {{example.text}}</p>
                                 <p>
-                                    <strong>Description:</strong> {{example.description}}</p>
+                                    <strong>Description:</strong> {{example.description}}</p> --}} 
                                 <a href="/">← Back To Home</a>
 
-                                <div class="form-group">
-                                    <label for="example-description">What have you Eaten today?</label>
+                                {{!-- <div class="form-group">
+                                    <label for="example-description"></label>
                                     <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
                                 </div>
                                 <button id="submit" class="btn btn-primary float-right">Submit</button>
-                                </form>
+                                </form> --}}
                         </div>
                     </div>
 
@@ -119,6 +159,9 @@
             </div>
         </div>
     </div>
+    <footer>
+    <p>Calorie Counter &copy; 2018 </p>
+</footer> 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
