@@ -40,19 +40,19 @@ module.exports = function(app) {
       age: req.body.age,
       weight: req.body.weight,
       calorieGoal: req.body.calorieGoal,
-      calories: req.body.calories})
+      calories: req.body.calories,
+     
+    })
       .then(function(dbProfile) {
         res.json(dbProfile);
       });
   });
   
   app.get("/api/username/profile/userinfo", function(req, res){
-    db.Profile.findAll({where: {
-      name: req.params.id
-    }
-  })
+    db.Profile.findAll({})
       .then(function(dbProfile) {
         res.json(dbProfile);
+        console.log(dbProfile);
       });
   });
   
@@ -106,6 +106,8 @@ module.exports = function(app) {
     db.User.findAll({})
       .then(function(dbSignIn) {
         res.json(dbSignIn);
+        
+        
       });
   });
   

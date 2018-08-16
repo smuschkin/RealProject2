@@ -113,6 +113,7 @@ var handleLogin = function (event) {
   var login = {
     email: $signInEmail.val().trim(),
     password: $signInPassword.val().trim()
+    
   };
 
   // if (!example.goal) {
@@ -121,7 +122,9 @@ var handleLogin = function (event) {
   // }
 
   API.userSignIn(login).then(function () {
-    console.log("welcome ")
+    console.log("welcome ");
+    console.log(login);
+
   });
 
   
@@ -154,6 +157,8 @@ var handleSignup = function (event) {
     console.log("new user created");
     API.userSignIn(login).then(function () {
       console.log("welcome " + login.email);
+      console.log(login);
+
     });
   });
 

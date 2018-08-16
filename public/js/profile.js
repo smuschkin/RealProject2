@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     //profile form submittal
     // ids to variables
     var $profileName = $("#profileName");
@@ -24,10 +23,10 @@ $(document).ready(function () {
     // var $signInButton = $("#loginSubmitForm");
 
     //signup
-    var $signUpEmail = $("#signUpEmail");
-    var $signUpPassword = $("#signUpPassword");
-    var $signUpPasswordVerify = $("#signUpPasswordVerify");
-    var $signUpButton = $("#signUpSubmitForm");
+    // var $signUpEmail = $("#signUpEmail");
+    // var $signUpPassword = $("#signUpPassword");
+    // var $signUpPasswordVerify = $("#signUpPasswordVerify");
+    // var $signUpButton = $("#signUpSubmitForm");
 
 
 
@@ -43,7 +42,12 @@ $(document).ready(function () {
             });
         },
 
-
+        getProfileData: function () {
+            return $.ajax({
+                url: "/api/username/profile/userinfo",
+                type: "GET"
+            });
+        },
 
         // saveExample: function (example) {
         //     return $.ajax({
