@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         },
       password: DataTypes.STRING,
       verifyPassword: DataTypes.STRING
+      
 
       
     });

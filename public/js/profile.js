@@ -11,12 +11,13 @@ $(document).ready(function () {
     var $viewProfileAge = $("#viewProfileAge");
     var $viewProfileWeight = $("#viewProfileWeight");
     var $viewProfileCalorieGoal = $("viewProfileCalorieGoal");
-    var $viewProfileCalorieGoalAmount = $("#viewProfileCalorieGoalAmount"); 
-    
+    var $viewProfileCalorieGoalAmount = $("#viewProfileCaloriesAmount");
+
 
     //profile form submit button
     var $profileFormSubmit = $("#profileFormSubmit");
 
+    var info = [];
 
     // var $exampleText = $("#example-text");
     // var $exampleDescription = $("#example-description");
@@ -51,10 +52,16 @@ $(document).ready(function () {
 
         getProfileData: function () {
             return $.ajax({
+
                 url: "/api/username/profile/userinfo",
                 type: "GET"
             });
         },
+
+
+
+
+
 
         // saveExample: function (example) {
         //     return $.ajax({
@@ -108,6 +115,12 @@ $(document).ready(function () {
         },
     };
 
+
+
+
+
+  
+
     var refreshExamples = function () {
         API.getExamples().then(function (data) {
             var $examples = data.map(function (example) {
@@ -137,7 +150,7 @@ $(document).ready(function () {
     };
 
 
-    
+
 
     var handleProfileSubmit = function (event) {
         event.preventDefault();
@@ -158,68 +171,80 @@ $(document).ready(function () {
         // }
 
         API.saveProfileData(userData).then(function () {
-            console.log(userData);
-        });
+            insertUserData(userData);
+                });
 
 
     };
 
+    function insertUserData(data) {
+        $viewProfileName.text(data.name);
+        $viewProfileAge.text(data.age);
+        $viewProfileWeight.text(data.weight);
+        $viewProfileCalorieGoal.text(data.calorieGoal);
+        console.log(data.calorieGoal);
+        $viewProfileCalorieGoalAmount.text(data.calories);
+
+  
+    };
 
 
+
+   
     //LOGIN FUNCTION
 
-    var handleLogin = function (event) {
-        event.preventDefault();
+    // var handleLogin = function (event) {
+    //     event.preventDefault();
 
-        var login = {
-            email: $signInEmail.val().trim(),
-            password: $signInPassword.val().trim()
-        };
+    //     var login = {
+    //         email: $signInEmail.val().trim(),
+    //         password: $signInPassword.val().trim()
+    //     };
 
-        // if (!example.goal) {
-        //   alert("You must enter a goal!");
-        //   return;
-        // }
+    //     // if (!example.goal) {
+    //     //   alert("You must enter a goal!");
+    //     //   return;
+    //     // }
 
-        API.userSignIn(login).then(function () {
-            console.log("welcome ")
-        });
+    //     API.userSignIn(login).then(function () {
+    //         console.log("welcome ")
+    //     });
 
 
-    };
+    // };
 
 
     //SIGNIN FUNCTION
 
-    var handleSignup = function (event) {
-        event.preventDefault();
+    // var handleSignup = function (event) {
+    //     event.preventDefault();
 
-        var signup = {
-            email: $signUpEmail.val().trim(),
-            password: $signUpPassword.val().trim(),
-            verifyPassword: $signUpPasswordVerify.val().trim()
+    //     var signup = {
+    //         email: $signUpEmail.val().trim(),
+    //         password: $signUpPassword.val().trim(),
+    //         verifyPassword: $signUpPasswordVerify.val().trim()
 
-        };
-        var login = {
-            email: $signUpEmail.val().trim(),
-            password: $signUpPassword.val().trim()
-        };
-
-
-        // if (!example.goal) {
-        //   alert("You must enter a goal!");
-        //   return;
-        // }
-
-        API.userSignUp(signup).then(function () {
-            console.log("new user created");
-            API.userSignIn(login).then(function () {
-                console.log("welcome " + login.email);
-            });
-        });
+    //     };
+    //     var login = {
+    //         email: $signUpEmail.val().trim(),
+    //         password: $signUpPassword.val().trim()
+    //     };
 
 
-    };
+    //     // if (!example.goal) {
+    //     //   alert("You must enter a goal!");
+    //     //   return;
+    //     // }
+
+    //     API.userSignUp(signup).then(function () {
+    //         console.log("new user created");
+    //         API.userSignIn(login).then(function () {
+    //             console.log("welcome " + login.email);
+    //         });
+    //     });
+
+
+    // };
 
 
     var handleFormSubmit = function (event) {
@@ -267,7 +292,7 @@ $(document).ready(function () {
     };
 
     // refreshExamples();
-    
+
 
 
     $profileFormSubmit.on("click", handleProfileSubmit);

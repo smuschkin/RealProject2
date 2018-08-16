@@ -95,7 +95,7 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      verifyPassword: req.body.verifyPassword,
+      verifyPassword: req.body.verifyPassword
     })
       .then(function(dbSignup) {
         res.json(dbSignup);
