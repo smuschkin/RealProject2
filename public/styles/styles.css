@@ -1,4 +1,4 @@
-.list-group-item {
+/* .list-group-item {
   line-height: 2.5;
 }
 
@@ -40,4 +40,97 @@ h2 {
 .dropdown {
   float:center;
   margin-right: 100px;
+} */
+
+/* CSS from Thursday */
+
+.list-group-item {
+  line-height: 2.5;
+}
+
+.list-group-item {
+  line-height: 2.5;
+}
+/* #userInformation{
+  background-color: lightgray;
+  border-style: round;
+  border-width: 5px;
+  
+} */
+#recordCalories{
+  background-color: lightgray;
+  border-style: round;
+  border-width: 5px;
+}
+
+.form-control {
+  width: 300px;
+  margin-left: 20px;
+}
+h3 {
+  font-size: 20px;
+  margin-left: 20px;
+
+}
+label {
+  color: darkgreen;
+  margin-left:20px;
+}
+#foodImage {
+  width: 200px;
+  height: 200px;
+}
+#infoImage {
+  width: 75px;
+  height: 75px;
+}
+#submit {
+  margin-left: 20px;
+}
+h2 {
+  color: green;
+}
+.jumbotron {
+  margin-top: 20px;
+}
+.dropdown {
+  float:center;
+  margin-right: 100px;
+}
+#dropdownMenuButton {
+float: right;
+position: relative;
+margin-right: 190px;
+margin-top: -56px;
+}
+footer {
+  background-color: lightseagreen;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+}
+.jumbotron {
+  padding: 20px;
+  margin-bottom: 20px;
+  /* margin-left: 20px; */
+  width: 700px;
+}
+.display-4 {
+  font-size: 34px;
+}
+#collasibleImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
+
+#blueberriesImage {
+  float:right;
+  width: 150px;
+  height: 150px;
+  margin-top: -100px;
+  border-radius: 8px;
 }
