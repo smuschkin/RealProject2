@@ -58,7 +58,6 @@ module.exports = function (app) {
       include: [db.User]
     }).then(function (dbProfile) {
       res.json(dbProfile);
-      console.log(dbProfile);
     });
   });
 

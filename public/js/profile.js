@@ -160,8 +160,14 @@ $(document).ready(function () {
 
         API.getProfileData().then(function (data) {
             console.log(data);
-
-            // insertUserData(userData);
+            var userData = {
+                name: data.name,
+                age: data.age,
+                weight:data.weight,
+                calorieGoal: data.calorieGoal,
+                calories: data.calories
+            }
+            insertUserData(userData);
         });
     }
 
@@ -311,7 +317,8 @@ $(document).ready(function () {
 
     $profileFormSubmit.on("click", handleProfileSubmit);
 
-    $viewProfileData.on("click", showProfileData);
+    //$viewProfileData.on("click", showProfileData);
 
+$("#ViewProfile").on("click", showProfileData);
 
 });
