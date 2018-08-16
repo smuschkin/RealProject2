@@ -54,10 +54,10 @@ $(document).ready(function () {
             });
         },
 
-        getProfileData: function (UserId) {
+        getProfileData: function () {
             return $.ajax({
 
-                url: "/api/username/profile/userinfo/" + UserId,
+                url: "/api/username/profile/userinfo/",
                 type: "GET"
             });
         },
@@ -156,7 +156,9 @@ $(document).ready(function () {
     var showProfileData = function () {
         event.preventDefault();
 
-        API.getProfileData(uID).then(function (data) {
+        console.log('samsawan HELLO EHELLO')
+
+        API.getProfileData().then(function (data) {
             console.log(data);
 
             // insertUserData(userData);

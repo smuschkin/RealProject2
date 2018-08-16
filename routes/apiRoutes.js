@@ -52,10 +52,10 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/username/profile/userinfo/:UserId", function (req, res) {
+  app.get("/api/username/profile/userinfo", function (req, res) {
     db.Profile.findOne({
       where: { UserId: uID },
-      include: [models.User]
+      include: [db.User]
     }).then(function (dbProfile) {
       res.json(dbProfile);
       console.log(dbProfile);
