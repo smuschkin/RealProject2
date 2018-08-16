@@ -88,7 +88,7 @@ label {
   margin-left: 20px;
 }
 h2 {
-  color: green;
+  color: rgb(44, 56, 147);
 }
 .jumbotron {
   margin-top: 20px;
@@ -104,13 +104,14 @@ margin-right: 190px;
 margin-top: -56px;
 }
 footer {
-  background-color: lightseagreen;
+  background-color: rgb(37, 192, 184);
+  border-top: solid 5px rgb(148, 142, 142);
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
-
+  padding-top: 5px;
 }
 .jumbotron {
   padding: 20px;
@@ -122,9 +123,15 @@ footer {
   font-size: 34px;
 }
 #collasibleImage {
-  width: 100px;
-  height: 100px;
+  width: 150px;
   border-radius: 8px;
+}
+
+#checklistPhoto {
+  width: 150px;
+  float: right;
+  margin-top: -100px;
+  margin-right: 10px;
 }
 
 #blueberriesImage {
