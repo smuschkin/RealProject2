@@ -15,7 +15,22 @@
                     {{!--
                     <img src="{{{/assets/images/healthyFood.jpg}}}" alt={{{fruits}}} /> --}}
                     <img src="./js/images/info_ball.png" alt="Fruits" id="infoImage">
-                    <form role="form">
+
+
+                            <button id="editProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#editProfileData">Edit Profile</button>
+
+
+<div class="modal fade" id="editProfileData">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h3 class="modal-title">Enter your profile Information</h3>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- body -->
+                        <div class="modal-header">
+                        <form role="form">
                         <h3>Enter your Profile Information</h3>
                         <div class="form-group">
                             <label for="example-description">Name</label>
@@ -41,6 +56,14 @@
                     <button id="profileFormSubmit" class="btn btn-primary float-left">Submit Profile Details</button>
                         <br>
                     </form>
+                        </div>
+</div>
+</div>
+</div>
+
+
+                    
+                  
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
