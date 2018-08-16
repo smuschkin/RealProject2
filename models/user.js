@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       
     });
     User.associate = function(models) {
-        User.hasOne(models.User)
+        User.hasOne(models.Profile)
       };
     return User;
   };
