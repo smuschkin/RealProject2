@@ -7,6 +7,13 @@ $(document).ready(function () {
     var $profileCalorieGoal = $("#profileCalorieGoal");
     var $profileCalorieGoalAmount = $("#profileCalorieGoalAmount");
 
+    var $viewProfileName = $("#viewProfileName");
+    var $viewProfileAge = $("#viewProfileAge");
+    var $viewProfileWeight = $("#viewProfileWeight");
+    var $viewProfileCalorieGoal = $("viewProfileCalorieGoal");
+    var $viewProfileCalorieGoalAmount = $("#viewProfileCalorieGoalAmount"); 
+    
+
     //profile form submit button
     var $profileFormSubmit = $("#profileFormSubmit");
 
@@ -101,33 +108,33 @@ $(document).ready(function () {
         },
     };
 
-    // var refreshExamples = function () {
-    //     API.getExamples().then(function (data) {
-    //         var $examples = data.map(function (example) {
-    //             var $a = $("<a>")
-    //                 .text(example.goal)
-    //                 .attr("href", "/example/" + example.id);
+    var refreshExamples = function () {
+        API.getExamples().then(function (data) {
+            var $examples = data.map(function (example) {
+                var $a = $("<a>")
+                    .text(example.goal)
+                    .attr("href", "/example/" + example.id);
 
-    //             var $li = $("<li>")
-    //                 .attr({
-    //                     class: "list-group-item",
-    //                     "data-id": example.id
-    //                 })
-    //                 .append($a);
+                var $li = $("<li>")
+                    .attr({
+                        class: "list-group-item",
+                        "data-id": example.id
+                    })
+                    .append($a);
 
-    //             var $button = $("<button>")
-    //                 .addClass("btn btn-danger float-right delete")
-    //                 .text("Completed!");
+                var $button = $("<button>")
+                    .addClass("btn btn-danger float-right delete")
+                    .text("Completed!");
 
-    //             $li.append($button);
-    //             return $li;
+                $li.append($button);
+                return $li;
 
-    //         });
+            });
 
-    //         $updateBtn.empty();
-    //         $updateBtn.append($examples);
-    //     });
-    // };
+            $updateBtn.empty();
+            $updateBtn.append($examples);
+        });
+    };
 
 
     
