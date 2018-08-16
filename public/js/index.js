@@ -1,6 +1,8 @@
 $(document).ready(function (){ 
   
 
+
+
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -18,7 +20,9 @@ var $signUpPassword = $("#signUpPassword");
 var $signUpPasswordVerify = $("#signUpPasswordVerify");
 var $signUpButton = $("#signUpSubmitForm");
 
+//login switch
 
+var userLoggedIn = false;
 
 var API = {
   saveExample: function (example) {
@@ -56,7 +60,7 @@ var API = {
   userSignIn: function (user) {
     return $.ajax({
      
-      url: "api/signin",
+      url: "api/signin/" + user,
       type: "GET"
 
     });
@@ -121,14 +125,16 @@ var handleLogin = function (event) {
   //   return;
   // }
 
-  API.userSignIn(login).then(function () {
+  API.userSignIn(login.email).then(function () {
     console.log("welcome ");
     console.log(login);
+    userLoggedIn = true;
 
   });
 
   
 };
+
 
 
 //SIGNIN FUNCTION

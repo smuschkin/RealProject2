@@ -1,119 +1,129 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
+  
+  var uID = "";
+  exports.uID = uID;
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Lifestyle.findAll({}).then(function(dbExamples) {
+  app.get("/api/examples", function (req, res) {
+    db.Lifestyle.findAll({}).then(function (dbExamples) {
       res.json(dbExamples);
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Lifestyle.create(req.body).then(function(dbExample) {
+  app.post("/api/examples", function (req, res) {
+    db.Lifestyle.create(req.body).then(function (dbExample) {
       res.json(dbExample);
     });
   });
 
-  app.put("/api/examples/:id", function(req, res) {
-    db.Lifestyle.update({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.put("/api/examples/:id", function (req, res) {
+    db.Lifestyle.update({ where: { id: req.params.id } }).then(function (dbExample) {
       res.json(dbExample);
     });
   });
-  
+
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Lifestyle.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.delete("/api/examples/:id", function (req, res) {
+    db.Lifestyle.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
       res.json(dbExample);
     });
   });
 
 
- 
 
-  
- 
-  
-  app.post("/api/username/profile/userinfo", function(req, res){
+
+
+
+
+  app.post("/api/username/profile/userinfo", function (req, res) {
     db.Profile.create({
       name: req.body.name,
       age: req.body.age,
       weight: req.body.weight,
       calorieGoal: req.body.calorieGoal,
       calories: req.body.calories,
-     
+      UserId: uID
+
     })
-      .then(function(dbProfile) {
+      .then(function (dbProfile) {
         res.json(dbProfile);
       });
   });
-  
-  app.get("/api/username/profile/userinfo", function(req, res){
-    db.Profile.findAll({})
-      .then(function(dbProfile) {
-        res.json(dbProfile);
-        console.log(dbProfile);
-      });
+
+  app.get("/api/username/profile/userinfo/:UserId", function (req, res) {
+    db.Profile.findOne({
+      where: { UserId: uID },
+      include: [models.User]
+    }).then(function (dbProfile) {
+      res.json(dbProfile);
+      console.log(dbProfile);
+    });
   });
-  
-  app.post("/api/username/blog/post", function(req, res){
+
+  app.post("/api/username/blog/post", function (req, res) {
     db.Blog.create({
       name: req.body.name,
       title: req.body.title,
       message: req.body.message
     })
-      .then(function(dbBlog) {
+      .then(function (dbBlog) {
         res.json(dbBlog);
       });
   });
-    
-  app.get("/api/username/blog/post/:id", function(req, res){
+
+  app.get("/api/username/blog/post/:id", function (req, res) {
     db.Blog.findAll({})
-      .then(function(dbBlog) {
+      .then(function (dbBlog) {
         res.json(dbBlog);
       });
   });
-  
-  app.post("/api/username/lifestyle/goals", function(req, res){
+
+  app.post("/api/username/lifestyle/goals", function (req, res) {
     db.Lifestyle.create({
       goal: req.body.goal,
       description: req.body.description,
     })
-      .then(function(dbLifestyle) {
-        res.json(dbLifestyle);
-      });
-  });
-    
-  app.get("/api/username/lifestyle/goals", function(req, res){
-    db.Lifestyle.findAll({})
-      .then(function(dbLifestyle) {
+      .then(function (dbLifestyle) {
         res.json(dbLifestyle);
       });
   });
 
-  app.post("/api/signup", function(req, res){
+  app.get("/api/username/lifestyle/goals", function (req, res) {
+    db.Lifestyle.findAll({})
+      .then(function (dbLifestyle) {
+        res.json(dbLifestyle);
+      });
+  });
+
+  app.post("/api/signup", function (req, res) {
     db.User.create({
+      id: req.body.id,
       email: req.body.email,
       password: req.body.password,
       verifyPassword: req.body.verifyPassword
     })
-      .then(function(dbSignup) {
+      .then(function (dbSignup) {
         res.json(dbSignup);
       });
   });
-    
-  app.get("/api/signin", function(req, res){
-    db.User.findAll({})
-      .then(function(dbSignIn) {
+
+  app.get("/api/signin/:email", function (req, res) {
+    db.User.findOne({ where: { email: req.params.email } })
+      .then(function (dbSignIn) {
         res.json(dbSignIn);
-        
-        
+        console.log(dbSignIn.dataValues.id);
+        uID = dbSignIn.dataValues.id;
+
+
+
       });
   });
-  
-  
-  };
-  
+
+
+};
+
 
 
 

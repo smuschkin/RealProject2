@@ -1,6 +1,10 @@
+
 $(document).ready(function () {
     //profile form submittal
     // ids to variables
+
+  
+
     var $profileName = $("#profileName");
     var $profileAge = $("#profileAge");
     var $profileWeight = $("#profileWeight");
@@ -16,7 +20,7 @@ $(document).ready(function () {
 
     //profile form submit button
     var $profileFormSubmit = $("#profileFormSubmit");
-
+    var $viewProfileData = $("#viewProfileData");
     var info = [];
 
     // var $exampleText = $("#example-text");
@@ -50,10 +54,10 @@ $(document).ready(function () {
             });
         },
 
-        getProfileData: function () {
+        getProfileData: function (UserId) {
             return $.ajax({
 
-                url: "/api/username/profile/userinfo",
+                url: "/api/username/profile/userinfo/" + UserId,
                 type: "GET"
             });
         },
@@ -119,7 +123,7 @@ $(document).ready(function () {
 
 
 
-  
+
 
     var refreshExamples = function () {
         API.getExamples().then(function (data) {
@@ -149,7 +153,15 @@ $(document).ready(function () {
         });
     };
 
+    var showProfileData = function () {
+        event.preventDefault();
 
+        API.getProfileData(uID).then(function (data) {
+            console.log(data);
+
+            // insertUserData(userData);
+        });
+    }
 
 
     var handleProfileSubmit = function (event) {
@@ -172,7 +184,7 @@ $(document).ready(function () {
 
         API.saveProfileData(userData).then(function () {
             insertUserData(userData);
-                });
+        });
 
 
     };
@@ -185,12 +197,12 @@ $(document).ready(function () {
         console.log(data.calorieGoal);
         $viewProfileCalorieGoalAmount.text(data.calories);
 
-  
+
     };
 
 
 
-   
+
     //LOGIN FUNCTION
 
     // var handleLogin = function (event) {
@@ -297,7 +309,7 @@ $(document).ready(function () {
 
     $profileFormSubmit.on("click", handleProfileSubmit);
 
-
+    $viewProfileData.on("click", showProfileData);
 
 
 });
