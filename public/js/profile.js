@@ -4,26 +4,16 @@ $(document).ready(function () {
     // ids to variables
 
 
-
-
-
-
-
-
-
-
-
-    // axios.get("https://trackapi.nutritionix.com/v2/search/instant?query=apple"
-    // , {
-    //     headers: {
-    //     "x-app-id": "your id",
-    //     "x-app-key":"your key"
-    //     }}
-
-
     //food api
     var foodItem = "";
     var calorieCount = 0;
+
+    var $mealName = $("#foodInput");
+
+    //meal submit
+    var $submitMeal = $("#sendFoodToDb");
+    //end meal data / api
+
 
 
     var $profileName = $("#profileName");
@@ -48,6 +38,8 @@ $(document).ready(function () {
 
 
     $("#submitFood").on("click", function () {
+        event.preventDefault();
+
         var food = $("#foodInput").val().trim();
         var foodQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + food;
         var settings = {
@@ -72,11 +64,20 @@ $(document).ready(function () {
             calorieCount = response.branded[0].nf_calories;
 
             console.log(foodItem + " " + calorieCount);
-        $("#sendFoodToDb").show();
+            $("#sendFoodToDb").show();
         });
 
 
     });
+
+
+    //     $("#sendFoodToDb").on("click", function () {
+
+    // console.log("hello");
+    // mealData =
+
+    //     });
+
 
     var API = {
         saveProfileData: function (userInfo) {
@@ -98,21 +99,20 @@ $(document).ready(function () {
             });
         },
 
+        saveMealData: function (data) {
+            return $.ajax({
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                type: "POST",
+                url: "/api/username/meal",
+                data: JSON.stringify(data)
+            });
+        },
 
 
 
 
-
-        // saveExample: function (example) {
-        //     return $.ajax({
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         type: "POST",
-        //         url: "api/examples",
-        //         data: JSON.stringify(example)
-        //     });
-        // },
         getExamples: function () {
             return $.ajax({
                 url: "api/examples",
@@ -157,37 +157,28 @@ $(document).ready(function () {
 
 
 
+    var handleMealSubmit = function (event) {
+        event.preventDefault();
+
+        var mealData = {
+            food: $mealName.val().trim(),
+
+            calorieCount: calorieCount
+
+
+        };
 
 
 
-
-    var refreshExamples = function () {
-        API.getExamples().then(function (data) {
-            var $examples = data.map(function (example) {
-                var $a = $("<a>")
-                    .text(example.goal)
-                    .attr("href", "/example/" + example.id);
-
-                var $li = $("<li>")
-                    .attr({
-                        class: "list-group-item",
-                        "data-id": example.id
-                    })
-                    .append($a);
-
-                var $button = $("<button>")
-                    .addClass("btn btn-danger float-right delete")
-                    .text("Completed!");
-
-                $li.append($button);
-                return $li;
-
-            });
-
-            $updateBtn.empty();
-            $updateBtn.append($examples);
+        API.saveMealData(mealData).then(function () {
+            // insertUserData(userData);
         });
+
+
     };
+
+
+
 
     var showProfileData = function () {
         event.preventDefault();
@@ -221,10 +212,7 @@ $(document).ready(function () {
 
         };
 
-        // if (!example.goal) {
-        //   alert("You must enter a goal!");
-        //   return;
-        // }
+
 
         API.saveProfileData(userData).then(function () {
             insertUserData(userData);
@@ -247,107 +235,9 @@ $(document).ready(function () {
 
 
 
-    //LOGIN FUNCTION
-
-    // var handleLogin = function (event) {
-    //     event.preventDefault();
-
-    //     var login = {
-    //         email: $signInEmail.val().trim(),
-    //         password: $signInPassword.val().trim()
-    //     };
-
-    //     // if (!example.goal) {
-    //     //   alert("You must enter a goal!");
-    //     //   return;
-    //     // }
-
-    //     API.userSignIn(login).then(function () {
-    //         console.log("welcome ")
-    //     });
 
 
-    // };
 
-
-    //SIGNIN FUNCTION
-
-    // var handleSignup = function (event) {
-    //     event.preventDefault();
-
-    //     var signup = {
-    //         email: $signUpEmail.val().trim(),
-    //         password: $signUpPassword.val().trim(),
-    //         verifyPassword: $signUpPasswordVerify.val().trim()
-
-    //     };
-    //     var login = {
-    //         email: $signUpEmail.val().trim(),
-    //         password: $signUpPassword.val().trim()
-    //     };
-
-
-    //     // if (!example.goal) {
-    //     //   alert("You must enter a goal!");
-    //     //   return;
-    //     // }
-
-    //     API.userSignUp(signup).then(function () {
-    //         console.log("new user created");
-    //         API.userSignIn(login).then(function () {
-    //             console.log("welcome " + login.email);
-    //         });
-    //     });
-
-
-    // };
-
-
-    var handleFormSubmit = function (event) {
-        event.preventDefault();
-
-        var example = {
-            goal: $exampleText.val().trim(),
-            description: $exampleDescription.val().trim()
-        };
-
-        if (!example.goal) {
-            alert("You must enter a goal!");
-            return;
-        }
-
-        API.saveExample(example).then(function () {
-            refreshExamples();
-        });
-
-        $exampleText.val("");
-        $exampleDescription.val("");
-    };
-
-    var handleDeleteBtnClick = function () {
-        var idToDelete = $(this)
-            .parent()
-            .attr("data-id");
-
-        API.deleteExample(idToDelete).then(function () {
-            refreshExamples();
-        });
-    };
-
-    var handleUpdateBtnClick = function () {
-
-        var idToUpdate = $(this);
-
-        var newStatus = {
-            status: idToUpdate
-        };
-
-        API.updateGoal(newStatus).then(function () {
-            refreshExamples();
-        });
-    };
-
-    // refreshExamples();
 
 
 
@@ -357,7 +247,7 @@ $(document).ready(function () {
 
     $("#ViewProfile").on("click", showProfileData);
 
-
+    $submitMeal.on("click", handleMealSubmit);
 
 
 
