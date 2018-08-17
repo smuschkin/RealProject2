@@ -3,7 +3,28 @@ $(document).ready(function () {
     //profile form submittal
     // ids to variables
 
-  
+
+
+
+    
+
+
+
+
+
+   
+    // axios.get("https://trackapi.nutritionix.com/v2/search/instant?query=apple"
+    // , {
+    //     headers: {
+    //     "x-app-id": "your id",
+    //     "x-app-key":"your key"
+    //     }}
+
+
+    //food api
+    var foodItem = "";
+    var calorieCount = 0;
+
 
     var $profileName = $("#profileName");
     var $profileAge = $("#profileAge");
@@ -23,24 +44,38 @@ $(document).ready(function () {
     var $viewProfileData = $("#viewProfileData");
     var info = [];
 
-    // var $exampleText = $("#example-text");
-    // var $exampleDescription = $("#example-description");
-    // var $submitBtn = $("#submit");
-    // var $GoalList = $("#goal-list");
-    // var $updateBtn = $("#to-do-list");
+    $("#submitFood").on("click", function () {
+        var food = $("#foodInput").val().trim();
+        var foodQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + food;
+        var settings = {
+            async: true,
+            crossDomain: true,
+            url: foodQuery,
+            method: "GET",
+            headers: {
+          
+            "x-app-id": "6a2a1644",
+            "x-app-key": "299235876ad8df154fe7505413d8548b",
+            
+            }
+        };
 
-    // //login 
-    // var $signInEmail = $("#loginEmail");
-    // var $signInPassword = $("#loginPassword");
-    // var $signInButton = $("#loginSubmitForm");
-
-    //signup
-    // var $signUpEmail = $("#signUpEmail");
-    // var $signUpPassword = $("#signUpPassword");
-    // var $signUpPasswordVerify = $("#signUpPasswordVerify");
-    // var $signUpButton = $("#signUpSubmitForm");
+ 
+        console.log("hello" + food);
 
 
+    $.ajax(settings).done(function (response){
+        console.log(response.branded[0]);
+        console.log(response.branded[0].nf_calories);
+        foodItem = food;
+        calorieCount = response.branded[0].nf_calories;
+        
+console.log(foodItem + " " + calorieCount);
+    });
+    // var sendFoodButton = 
+
+
+});
 
     var API = {
         saveProfileData: function (userInfo) {
@@ -163,7 +198,7 @@ $(document).ready(function () {
             var userData = {
                 name: data.name,
                 age: data.age,
-                weight:data.weight,
+                weight: data.weight,
                 calorieGoal: data.calorieGoal,
                 calories: data.calories
             }
@@ -319,6 +354,12 @@ $(document).ready(function () {
 
     //$viewProfileData.on("click", showProfileData);
 
-$("#ViewProfile").on("click", showProfileData);
+    $("#ViewProfile").on("click", showProfileData);
+
+
+
+
+
+
 
 });
