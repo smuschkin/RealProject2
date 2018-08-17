@@ -16,6 +16,10 @@ $(document).ready(function () {
 
     //meal submit
     var $submitMeal = $("#sendFoodToDb");
+// show mealInfo before submit
+
+
+
     //end meal data / api
 
 
@@ -69,6 +73,8 @@ $(document).ready(function () {
 
             console.log(foodItem + " " + calorieCount);
             $mealTime = $('input[name="mealTime"]:checked').val();
+            $("#showMealName").text("What you ate: " + foodItem);
+            $("#showCalAmount").text("Caloires: " + calorieCount);
             $("#sendFoodToDb").show();
             $("#submitFood").hide();
 
@@ -181,7 +187,7 @@ $(document).ready(function () {
         API.saveMealData(mealData).then(function () {
             $("#sendFoodToDb").hide();
             $("#submitFood").show();
-
+           
 
             // insertUserData(userData);
         });
@@ -189,7 +195,7 @@ $(document).ready(function () {
 
     };
 
-
+  
 
 
     var showProfileData = function () {

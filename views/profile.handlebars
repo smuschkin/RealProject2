@@ -109,7 +109,78 @@
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Are You On Track?</h1>
-                        <h3>Summary of Calories</h3>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Add Meal
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="onTrackForm">
+                                            <div class="form-group ">
+                                                <label for="formGroupExampleInput">What did you eat?</label>
+                                                <input type="text" class="form-control" id="foodInput" placeholder="Example input">
+
+                                            </div>
+                                            <label for="formGroupExampleInput">When did you eat?</label>
+                                            <br>
+                                            <div class="form-check form-check-inline">
+
+                                                <input class="form-check-input was " name="mealTime" type="radio" id="breakfast" value="Breakfast">
+                                                <label class="form-check-label" for="breakfast">Breakfast</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" name="mealTime" type="radio" id="lunch" value="Lunch">
+                                                <label class="form-check-label" for="lunch">Lunch</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" name="mealTime" type="radio" id="dinner" value="Dinner">
+                                                <label class="form-check-label" for="dinner">Dinner</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" name="mealTime" type="radio" id="snack" value="Snack">
+                                                <label class="form-check-label" for="snack">Snack</label>
+                                            </div>
+
+
+                                            <br>
+                                            <br>
+                                            <div>
+                                                <h5 id="showMealName"></h5>
+                                                <h5 id="showCalAmount"></h5>
+                                            </div>
+
+                                            <div>
+                                                <button id="submitFood" class="btn btn-success ">Submit</button>
+                                            </div>
+                                            <button class='btn btn-success' id='sendFoodToDb'>Track Meal?</button>
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Daily Summary</h4>
+
+
+
+
+                        </div>
+                        <br>
+                        <br>
                         <img src="./js/images/healthyFood.jpg" alt="Fruits" id="foodImage">
                         <ul id="example-list" class="list-group">
                             {{#each userData}}
@@ -122,43 +193,7 @@
 
 
 
-                        <form id="onTrackForm">
-                            <div class="form-group ">
-                                <label for="formGroupExampleInput">What did you eat?</label>
-                                <input type="text" class="form-control" id="foodInput" placeholder="Example input">
 
-                            </div>
-                                <label for="formGroupExampleInput">When did you eat?</label>
-                            <br>
-                            <div class="form-check form-check-inline">
-
-                                <input class="form-check-input was " name="mealTime" type="radio" id="breakfast" value="Breakfast">
-                                <label class="form-check-label" for="breakfast">Breakfast</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="mealTime" type="radio" id="lunch" value="Lunch">
-                                <label class="form-check-label" for="lunch">Lunch</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="mealTime" type="radio" id="dinner" value="Dinner" >
-                                <label class="form-check-label" for="dinner">Dinner</label>
-                            </div>
-                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="mealTime" type="radio" id="snack" value="Snack" >
-                                <label class="form-check-label" for="snack">Snack</label>
-                            </div>
-                            
-                           
-                            <br>
-                            <br>
-                           
-                           
-                            <div>
-                                <button id="submitFood" class="btn btn-success ">Submit</button>
-                            </div>
-                            <button class='btn btn-success' id='sendFoodToDb'>Track Meal?</button>
-
-                        </form>
                     </div>
 
                 </div>
