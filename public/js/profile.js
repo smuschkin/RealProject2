@@ -6,13 +6,13 @@ $(document).ready(function () {
 
 
 
-    
 
 
 
 
 
-   
+
+
     // axios.get("https://trackapi.nutritionix.com/v2/search/instant?query=apple"
     // , {
     //     headers: {
@@ -44,6 +44,9 @@ $(document).ready(function () {
     var $viewProfileData = $("#viewProfileData");
     var info = [];
 
+    $("#sendFoodToDb").hide();
+
+
     $("#submitFood").on("click", function () {
         var food = $("#foodInput").val().trim();
         var foodQuery = "https://trackapi.nutritionix.com/v2/search/instant?query=" + food;
@@ -53,29 +56,27 @@ $(document).ready(function () {
             url: foodQuery,
             method: "GET",
             headers: {
-          
-            "x-app-id": "6a2a1644",
-            "x-app-key": "299235876ad8df154fe7505413d8548b",
-            
+
+                "x-app-id": "6a2a1644",
+                "x-app-key": "299235876ad8df154fe7505413d8548b",
+
             }
         };
 
- 
-        console.log("hello" + food);
 
 
-    $.ajax(settings).done(function (response){
-        console.log(response.branded[0]);
-        console.log(response.branded[0].nf_calories);
-        foodItem = food;
-        calorieCount = response.branded[0].nf_calories;
-        
-console.log(foodItem + " " + calorieCount);
+        $.ajax(settings).then(function (response) {
+            console.log(response.branded[0]);
+            console.log(response.branded[0].nf_calories);
+            foodItem = food;
+            calorieCount = response.branded[0].nf_calories;
+
+            console.log(foodItem + " " + calorieCount);
+        $("#sendFoodToDb").show();
+        });
+
+
     });
-    // var sendFoodButton = 
-
-
-});
 
     var API = {
         saveProfileData: function (userInfo) {
