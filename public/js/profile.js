@@ -1,14 +1,18 @@
 
 $(document).ready(function () {
-    //profile form submittal
-    // ids to variables
-
+ 
 
     //food api
     var foodItem = "";
     var calorieCount = 0;
 
+
+    
+    
     var $mealName = $("#foodInput");
+    var totalMealCalorie = 0;
+    var $mealTime = "";
+
 
     //meal submit
     var $submitMeal = $("#sendFoodToDb");
@@ -64,7 +68,10 @@ $(document).ready(function () {
             calorieCount = response.branded[0].nf_calories;
 
             console.log(foodItem + " " + calorieCount);
+            $mealTime = $('input[name="mealTime"]:checked').val();
             $("#sendFoodToDb").show();
+            $("#submitFood").hide();
+
         });
 
 
@@ -161,9 +168,10 @@ $(document).ready(function () {
         event.preventDefault();
 
         var mealData = {
+            mealtime: $mealTime,
             food: $mealName.val().trim(),
-
             calorieCount: calorieCount
+            // dayCount: totalMealCalorie
 
 
         };
@@ -171,6 +179,10 @@ $(document).ready(function () {
 
 
         API.saveMealData(mealData).then(function () {
+            $("#sendFoodToDb").hide();
+            $("#submitFood").show();
+
+
             // insertUserData(userData);
         });
 

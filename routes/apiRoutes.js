@@ -125,7 +125,9 @@ module.exports = function (app) {
       mealtime: req.body.mealtime,
       food: req.body.food,
       calorieCount: req.body.calorieCount,
-      dayCount: req.body.dayCount
+      dayCount: req.body.dayCount,
+      UserId: uID
+
     })
       .then(function (dbMeal) {
         res.json(dbMeal);
