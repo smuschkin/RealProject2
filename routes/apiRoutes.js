@@ -135,7 +135,26 @@ module.exports = function (app) {
   });
 
   app.get("/api/username/meal", function (req, res) {
-    db.Meal.findAll({})
+    db.Meal.findAll({
+      limit: 1,
+      where: { UserId: uID },
+      order: [ [ 'createdAt', 'DESC' ]],
+      include: [db.User]
+
+    })
+      .then(function (dbMeal) {
+        res.json(dbMeal);
+      });
+  });
+
+  app.get("/api/username/meal/total", function (req, res) {
+    db.Meal.findAll({
+      limit: 1,
+      where: { UserId: uID },
+      order: [ [ 'createdAt', 'DESC' ]],
+      include: [db.User]
+
+    })
       .then(function (dbMeal) {
         res.json(dbMeal);
       });

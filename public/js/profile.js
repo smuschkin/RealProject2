@@ -1,23 +1,23 @@
 
 $(document).ready(function () {
- 
+
 
     //food api
     var foodItem = "";
     var calorieCount = 0;
 
 
-    
-    
+
+
     var $mealName = $("#foodInput");
-    var totalMealCalorie = 0;
+    var totalDailyCal = 0;
     var $mealTime = "";
 
 
     //meal submit
     var $submitMeal = $("#sendFoodToDb");
-// show mealInfo before submit
-
+    // show mealInfo before submit
+    var $displayDailyCals = $("#dailySummaryTotalCal");
 
 
     //end meal data / api
@@ -122,8 +122,15 @@ $(document).ready(function () {
                 data: JSON.stringify(data)
             });
         },
+      
 
+        displayDailyCalTotal: function () {
+            return $.ajax({
 
+                url: "/api/username/meal",
+                type: "GET"
+            });
+        },
 
 
         getExamples: function () {
@@ -171,13 +178,14 @@ $(document).ready(function () {
 
 
     var handleMealSubmit = function (event) {
+
         event.preventDefault();
 
         var mealData = {
             mealtime: $mealTime,
             food: $mealName.val().trim(),
-            calorieCount: calorieCount
-            // dayCount: totalMealCalorie
+            calorieCount: calorieCount,
+            dayCount: totalDailyCal + calorieCount
 
 
         };
@@ -187,7 +195,8 @@ $(document).ready(function () {
         API.saveMealData(mealData).then(function () {
             $("#sendFoodToDb").hide();
             $("#submitFood").show();
-           
+
+
 
             // insertUserData(userData);
         });
@@ -195,7 +204,48 @@ $(document).ready(function () {
 
     };
 
-  
+    var showTotalCalAmt = function () {
+        event.preventDefault();
+
+        console.log('samsawan HELLO EHELLO');
+
+        API.displayDailyCalTotal().then(function (data) {
+            console.log(data);
+            var foodData = {
+                totalDailyCal: data[0].dayCount
+
+
+            }
+
+
+            console.log(foodData.totalDailyCal);
+            totalDailyCal = foodData.totalDailyCal;
+            console.log(totalDailyCal);
+            $("#dailySummaryTotalCal").text(totalDailyCal);
+
+        });
+
+    };
+
+
+    var displayCals = function () {
+
+        console.log('samsawan HELLO EHELLO');
+
+        API.displayDailyCalTotal().then(function (data) {
+            console.log(data);
+            var foodData = {
+                totalDailyCal: data[0].dayCount
+
+
+            }
+
+
+            totalDailyCal = foodData.totalDailyCal;
+            $("#dailySummaryTotalCal").text(totalDailyCal);
+        });
+
+    };
 
 
     var showProfileData = function () {
@@ -215,6 +265,8 @@ $(document).ready(function () {
             insertUserData(userData);
         });
     }
+
+
 
 
     var handleProfileSubmit = function (event) {
@@ -251,6 +303,13 @@ $(document).ready(function () {
     };
 
 
+    // function insertUserData(data) {
+    //     $viewProfileName.text(data.name);
+      
+
+
+    // };
+
 
 
 
@@ -267,8 +326,8 @@ $(document).ready(function () {
 
     $submitMeal.on("click", handleMealSubmit);
 
-
-
-
+    $("#submitFood").on("click", showTotalCalAmt);
+    displayCals();
+$(".closeFoodModal").on("click",displayCals);
 
 });
