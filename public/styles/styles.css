@@ -1,11 +1,13 @@
-/* .list-group-item {
+
+.list-group-item {
   line-height: 2.5;
 }
 
 .list-group-item {
   line-height: 2.5;
 }
-#recordCalories{
+
+#recordCalories {
   background-color: lightgray;
   border-style: round;
   border-width: 5px;
@@ -25,60 +27,11 @@ label {
   margin-left:20px;
 }
 #foodImage {
-  width: 200px;
-  height: 200px;
-}
-#submit {
-  margin-left: 20px;
-}
-h2 {
-  color: green;
-}
-.jumbotron {
-  margin-top: 20px;
-}
-.dropdown {
-  float:center;
-  margin-right: 100px;
-} */
-
-/* CSS from Thursday */
-
-.list-group-item {
-  line-height: 2.5;
-}
-
-.list-group-item {
-  line-height: 2.5;
-}
-/* #userInformation{
-  background-color: lightgray;
-  border-style: round;
-  border-width: 5px;
-  
-} */
-#recordCalories{
-  background-color: lightgray;
-  border-style: round;
-  border-width: 5px;
-}
-
-.form-control {
-  width: 300px;
-  margin-left: 20px;
-}
-h3 {
-  font-size: 20px;
-  margin-left: 20px;
-
-}
-label {
-  color: darkgreen;
-  margin-left:20px;
-}
-#foodImage {
-  width: 200px;
-  height: 200px;
+  float:right;
+  width: 150px;
+  height: 150px;
+  margin-top: -85px;
+  border-radius: 8px;
 }
 #infoImage {
   width: 75px;
@@ -100,8 +53,8 @@ h2 {
 #dropdownMenuButton {
 float: right;
 position: relative;
-margin-right: 190px;
-margin-top: -56px;
+margin-right: -20px;
+margin-top: -190px;
 }
 footer {
   background-color: rgb(37, 192, 184);
@@ -112,12 +65,15 @@ footer {
   width: 100%;
   text-align: center;
   padding-top: 5px;
+  font-size: 12px;
 }
 .jumbotron {
   padding: 20px;
   margin-bottom: 20px;
   /* margin-left: 20px; */
   width: 700px;
+  height: 375px;
+ 
 }
 .display-4 {
   font-size: 34px;
@@ -140,4 +96,8 @@ footer {
   height: 150px;
   margin-top: -100px;
   border-radius: 8px;
+}
+#submit {
+  margin-right: 225px;
+  margin-top: -60px;
 }

@@ -8,13 +8,14 @@
                             {{!--
                             <h1>{{msg}}: "Reference person's name"</h1> --}}
                             <h2>My Profile</h2>
+                            <span id="greeting"></span>
+
                         </h1>
-                        <p class="lead">Healthy Lifestyle User Information.</p>
+                        <p class="lead">Enter user information</p>
 
                         <img src="./js/images/blueberries.jpg" alt="Fruits" id="blueberriesImage">
                         <div id="userInformation">
-                            {{!--
-                            <img src="{{{/assets/images/healthyFood.jpg}}}" alt={{{fruits}}} /> --}}
+
                             <img src="./js/images/info_ball.png" alt="Fruits" id="infoImage">
 
                             <button id="ViewProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#viewProfileData">View Profile</button>
@@ -22,64 +23,6 @@
                             <button id="editProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#editProfileData">Edit Profile</button>
                         </div>
                     </div>
-
-
-                    {{!-- <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        My Profile
-                                    </button>
-                                </h5>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                <img src="./js/images/apples.jpg" alt="Fruits" id="collasibleImage">
-                                <div class="card-body">
-                                    Welcome to
-                                    <strong>The Healhy Weight Challenge!</strong> We are here to help you reach your goals one calorie
-                                    at a time. Please take a moment to record your profile information accurately so you
-                                    can begin competing against other users by counting calories in a fun way.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Lifestyle
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <img src="./js/images/active.jpg" alt="Fruits" id="collasibleImage">
-                                <div class="card-body">
-                                    Having an active lifestyle is just as important as eating a healthy amount of calories each day. On this page, you will be
-                                    able to keep track of your daily activity goals and supplemental nutrient intake; such
-                                    as how many glasses of water did you consume today.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        My Blog
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <img src="./js/images/blog.jpg" alt="Fruits" id="collasibleImage">
-                                <div class="card-body">
-                                    Having a way to keep notes about how your day went is an important part of The Healthy Weight Challenge. Some days we fall
-                                    short of our goals but being able to document what happened can keep you on the right.
-                                    We encourage all our users to fill out a daily blog. You will be suprised how much you
-                                    will enjoy reflecting back as you participate in this challenge. track.
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <div class="modal fade" id="viewProfileData">
                         <div class="modal-dialog">
@@ -163,25 +106,6 @@
                     </div>
                 </div>
 
-
-
-
-
-
-
-                {{!--
-                <form class="clearfix mb-4" action="POST">
-                    <div class="form-group">
-                        <label for="example-text">Category</label>
-                        <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-                    </div>
-                    <div class="form-group">
-                        <label for="example-description">My Goal:</label>
-                        <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-                    </div>
-                    <button id="submit" class="btn btn-primary float-right">Submit</button>
-                </form> --}}
-
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Are You On Track?</h1>
@@ -197,15 +121,6 @@
                         </ul>
 
 
-                        <a href="/">← Back To Home</a>
-
-                        {{!--
-                        <div class="form-group">
-                            <label for="example-description"></label>
-                            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-                        </div>
-                        <button id="submit" class="btn btn-primary float-right">Submit</button>
-                        </form> --}}
                     </div>
                 </div>
                 <div>
@@ -226,13 +141,11 @@
                 <br>
                 <br>
             </div>
-            <footer>
-                <p>Calorie Counter &copy; 2018 </p>
-            </footer>
+          
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
                 crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
-            <script src="/js/profile.js"></script>
             <script src="/js/index.js"></script>
+            <script src="/js/profile.js"></script>
