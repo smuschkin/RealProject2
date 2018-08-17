@@ -120,6 +120,24 @@ module.exports = function (app) {
       });
   });
 
+  app.post("/api/username/meal", function (req, res) {
+    db.Meal.create({
+      mealtime: req.body.mealtime,
+      food: req.body.food,
+      calorieCount: req.body.calorieCount,
+      dayCount: req.body.dayCount
+    })
+      .then(function (dbMeal) {
+        res.json(dbMeal);
+      });
+  });
+
+  app.get("/api/username/meal", function (req, res) {
+    db.Meal.findAll({})
+      .then(function (dbMeal) {
+        res.json(dbMeal);
+      });
+  });
 
 };
 
