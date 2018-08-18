@@ -147,9 +147,8 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/username/meal/total", function (req, res) {
+  app.get("/api/username/meal/history", function (req, res) {
     db.Meal.findAll({
-      limit: 1,
       where: { UserId: uID },
       order: [ [ 'createdAt', 'DESC' ]],
       include: [db.User]

@@ -109,6 +109,11 @@
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Are You On Track?</h1>
+
+                        <br>
+                        <br>
+                        <img src="./js/images/healthyFood.jpg" alt="Fruits" id="foodImage">
+
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                             Add Meal
@@ -173,16 +178,45 @@
                             </div>
                         </div>
                         <div>
-                            <h4>Daily Summary</h4>
-                            <h6 id="dailySummaryTotalCal"></h6>
+                            <br>
 
+                            <h4>Daily Summary</h4>
+                            <h5 id="dailySummaryTotalCal"></h5>
+                            <br>
+                            <br>
+                            <div>
+                                <h4>Meal History</h4>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                      View  
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div id="historyTablePlace"class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
                         </div>
                         <br>
                         <br>
-                        <img src="./js/images/healthyFood.jpg" alt="Fruits" id="foodImage">
                         <ul id="example-list" class="list-group">
                             {{#each userData}}
                             <li data-id="{{this.id}}" class="list-group-item">

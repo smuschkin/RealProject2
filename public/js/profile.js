@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+$(function()  {
 
 
     //food api
@@ -122,7 +122,7 @@ $(document).ready(function () {
                 data: JSON.stringify(data)
             });
         },
-      
+
 
         displayDailyCalTotal: function () {
             return $.ajax({
@@ -132,13 +132,15 @@ $(document).ready(function () {
             });
         },
 
-
-        getExamples: function () {
+        getMealHistory: function () {
             return $.ajax({
-                url: "api/examples",
+
+                url: "/api/username/meal/history",
                 type: "GET"
             });
         },
+
+
         updateGoal: function () {
             return $.ajax({
                 url: "api/examples",
@@ -247,6 +249,26 @@ $(document).ready(function () {
 
     };
 
+    var displayMealHistory = function () {
+        event.preventDefault();
+
+        console.log('samsawan HELLO EHELLO')
+
+        API.getMealHistory().then(function (data) {
+            console.log(data);
+            var mealHistory = {
+                mealtime: data.mealtime,
+                food: data.food,
+                calorieCount: data.calorieCount,
+                dayCount: data.dayCount,
+                createdAt: data.createdAt
+            }
+            insertMealHistory(mealHistory);
+        });
+    }
+
+
+
 
     var showProfileData = function () {
         event.preventDefault();
@@ -290,7 +312,7 @@ $(document).ready(function () {
 
 
     };
-
+    //profile data function, insert
     function insertUserData(data) {
         $viewProfileName.text(data.name);
         $viewProfileAge.text(data.age);
@@ -301,22 +323,54 @@ $(document).ready(function () {
 
 
     };
+    //mealHistory function
+    function insertMealHistory(data) {
+        $viewProfileName.text(data.mealtime);
+        $viewProfileAge.text(data.food);
+        $viewProfileWeight.text(data.calorieCount);
+        $viewProfileCalorieGoal.text(data.dayCount);
+        $viewProfileCalorieGoalAmount.text(data.createdAt);
 
 
-    // function insertUserData(data) {
-    //     $viewProfileName.text(data.name);
-      
+    };
 
 
-    // };
+    // function dynamicHistoryTable(){
+    //     var $historyTable = $("<table id='mealHistoryTable'>"+ "</table>");
+    //     var $historyRow1 = $("<tr id='columnNames'>" + "</tr>");
+    //     var $historyCell1 = $("<td id='>" + "</td>");
+
+    //     $historyTable.append($historyRow);
+
+    // }
+
+
+
+    function dynamicHistoryTable() {
+
+
+        var table = $("<table></table>");
+        var tableRow = $("<tr></tr>");
+        var headerName = ["mealtime", "food", "calorieCount", "dayCount", "createdAt"];
+        // var tableData = $("<td>" + data + "</td>");
+        table.append("#historyTablePlace");
+     
+        table.append(tableRow);
+
+        for (var i = 0; i < 12; i++) {
+            console.log("hi");
+            var tableColumnHeader = $("<th>" + headerName[i] + "</th>");
+
+            tableRow.append(tableColumnHeader);
+        }
+
+    };
 
 
 
 
 
-
-
-
+    dynamicHistoryTable();
 
     $profileFormSubmit.on("click", handleProfileSubmit);
 
@@ -328,6 +382,6 @@ $(document).ready(function () {
 
     $("#submitFood").on("click", showTotalCalAmt);
     displayCals();
-$(".closeFoodModal").on("click",displayCals);
+    $(".closeFoodModal").on("click", displayCals);
 
 });

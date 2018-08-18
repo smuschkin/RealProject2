@@ -226,6 +226,32 @@ $signUpButton.on("click", handleSignup);
 
 
 
+var handleLogin = function (event) {
+  event.preventDefault();
+
+  var login = {
+    email: $signInEmail.val().trim(),
+    password: $signInPassword.val().trim()
+    
+  };
+
+  // if (!example.goal) {
+  //   alert("You must enter a goal!");
+  //   return;
+  // }
+
+  API.userSignIn(login.email).then(function () {
+    console.log("welcome ");
+    console.log(login);
+    userLoggedIn = true;
+
+  });
+
+  
+};
+
+
+
 var today = new Date();
 var hourNow = today.getHours();
 var greeting;
