@@ -73,8 +73,8 @@ $(function()  {
 
             console.log(foodItem + " " + calorieCount);
             $mealTime = $('input[name="mealTime"]:checked').val();
-            $("#showMealName").text("What you ate: " + foodItem);
-            $("#showCalAmount").text("Caloires: " + calorieCount);
+            $("#showMealName").text("Food Item: " + foodItem);
+            $("#showCalAmount").text("Calories: " + calorieCount);
             $("#sendFoodToDb").show();
             $("#submitFood").hide();
 
