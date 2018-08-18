@@ -31,27 +31,27 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "api/goal",
       data: JSON.stringify(example)
     });
   },
   getExamples: function () {
     return $.ajax({
-      url: "api/examples",
+      url: "api/goal",
       type: "GET"
     });
   },
   updateGoal: function () {
     return $.ajax({
-      url: "api/examples",
+      url: "api/goal",
       type: "PUT",
       data: newStatus
     });
   },
-
+ 
   deleteExample: function (id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/goal/" + id,
       type: "DELETE"
     });
   },
@@ -82,7 +82,7 @@ var refreshExamples = function () {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.goal)
-        .attr("href", "/example/" + example.id);
+        .attr("href", "/goal/" + example.id);
 
       var $li = $("<li>")
         .attr({
@@ -180,8 +180,8 @@ var handleFormSubmit = function (event) {
     description: $exampleDescription.val().trim()
   };
 
-  if (!example.goal) {
-    alert("You must enter a goal!");
+  if ($exampleText.val() === "") {
+    // alert("You must enter a goal!");
     return;
   }
 

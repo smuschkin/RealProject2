@@ -3,5 +3,12 @@ module.exports = function (sequelize, DataTypes) {
       goal: DataTypes.STRING,
       description: DataTypes.TEXT,
     });
+    Lifestyle.associate = function(models) {
+      Lifestyle.belongsTo(models.User, {
+        foreignKey: {
+          allowNull: false
+        }
+      })
+    };
     return Lifestyle;
   };

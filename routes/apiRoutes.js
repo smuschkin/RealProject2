@@ -2,30 +2,39 @@ var db = require("../models");
 
 module.exports = function (app) {
   
-  var uID = "";
+  var uID = null;
   exports.uID = uID;
   // Get all examples
-  app.get("/api/examples", function (req, res) {
-    db.Lifestyle.findAll({}).then(function (dbExamples) {
+  app.get("/api/goal", function (req, res) {
+    db.Lifestyle.findAll({
+      where: {
+        UserId: uID
+      }
+    }).then(function (dbExamples) {
       res.json(dbExamples);
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Lifestyle.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
-    });
+  app.post("/api/goal", function (req, res) {
+    db.Lifestyle.create({
+      goal: req.body.goal,
+      description: req.body.description,
+      UserId: uID
+    })
+      .then(function (dbLifestyle) {
+        res.json(dbLifestyle);
+      });
   });
 
-  app.put("/api/examples/:id", function (req, res) {
+  app.put("/api/goal/:id", function (req, res) {
     db.Lifestyle.update({ where: { id: req.params.id } }).then(function (dbExample) {
       res.json(dbExample);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
+  app.delete("/api/goal/:id", function (req, res) {
     db.Lifestyle.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
       res.json(dbExample);
     });
@@ -79,22 +88,18 @@ module.exports = function (app) {
       });
   });
 
-// Standings retrieve all profiles
-  app.get("/api/standings", function(req, res) {
-    db.Profile.findAll({}).then(function(dbProfiles) {
-          res.json(dbProfiles);
-      });
-  });
-  
-  app.post("/api/username/lifestyle/goals", function (req, res) {
-    db.Lifestyle.create({
-      goal: req.body.goal,
-      description: req.body.description,
-    })
-      .then(function (dbLifestyle) {
-        res.json(dbLifestyle);
-      });
-  });
+
+
+app.post("/api/username/lifestyle/goals", function (req, res) {
+   db.Lifestyle.create({
+     goal: req.body.goal,
+     description: req.body.description,
+     UserId: uID
+   })
+     .then(function (dbLifestyle) {
+       res.json(dbLifestyle);
+     });
+ });
 
   app.get("/api/username/lifestyle/goals", function (req, res) {
     db.Lifestyle.findAll({})
@@ -132,35 +137,15 @@ module.exports = function (app) {
       mealtime: req.body.mealtime,
       food: req.body.food,
       calorieCount: req.body.calorieCount,
-      dayCount: req.body.dayCount,
-      UserId: uID
-
+      dayCount: req.body.dayCount
     })
       .then(function (dbMeal) {
         res.json(dbMeal);
       });
   });
 
-  app.get("/api/username/meal", function (req, res) {
-    db.Meal.findAll({
-      limit: 1,
-      where: { UserId: uID },
-      order: [ [ 'createdAt', 'DESC' ]],
-      include: [db.User]
-
-    })
-      .then(function (dbMeal) {
-        res.json(dbMeal);
-      });
-  });
-
-  app.get("/api/username/meal/history", function (req, res) {
-    db.Meal.findAll({
-      where: { UserId: uID },
-      order: [ [ 'createdAt', 'DESC' ]],
-      include: [db.User]
-
-    })
+  app.get("/api/username/meal/:UserId", function (req, res) {
+    db.Meal.findAll({})
       .then(function (dbMeal) {
         res.json(dbMeal);
       });
