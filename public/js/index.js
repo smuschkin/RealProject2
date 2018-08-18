@@ -48,7 +48,7 @@ var API = {
       data: newStatus
     });
   },
- 
+
   deleteExample: function (id) {
     return $.ajax({
       url: "api/goal/" + id,

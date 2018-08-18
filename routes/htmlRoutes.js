@@ -13,9 +13,9 @@ module.exports = function (app) {
 
   // Load example page and pass in an example by id
   app.get("/goal/:id", function (req, res) {
-    db.Lifestyle.findOne({ where: { id: req.params.id } }).then(function (dbgoal) {
+    db.Lifestyle.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
       res.render("goal", {
-        lifestyle: dbgoal
+        lifestyle: dbExample
       });
     });
   });
@@ -30,7 +30,7 @@ module.exports = function (app) {
   });
 
   app.get("/lifestyle", function (req, res) {
-    db.Example.findAll({}).then(function (dbLifestyle) {
+    db.Lifestyle.findAll({}).then(function (dbLifestyle) {
       res.render("lifestyle", {
         msg: "Welcome!",
         examples: dbLifestyle

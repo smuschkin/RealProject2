@@ -1,8 +1,8 @@
 var db = require("../models");
 
 module.exports = function (app) {
-  
-  var uID = null;
+
+  var uID = "";
   exports.uID = uID;
   // Get all examples
   app.get("/api/goal", function (req, res) {
@@ -21,10 +21,9 @@ module.exports = function (app) {
       goal: req.body.goal,
       description: req.body.description,
       UserId: uID
-    })
-      .then(function (dbLifestyle) {
-        res.json(dbLifestyle);
-      });
+    }).then(function (dbExample) {
+      res.json(dbExample);
+    });
   });
 
   app.put("/api/goal/:id", function (req, res) {
@@ -88,18 +87,16 @@ module.exports = function (app) {
       });
   });
 
-
-
-app.post("/api/username/lifestyle/goals", function (req, res) {
-   db.Lifestyle.create({
-     goal: req.body.goal,
-     description: req.body.description,
-     UserId: uID
-   })
-     .then(function (dbLifestyle) {
-       res.json(dbLifestyle);
-     });
- });
+  app.post("/api/username/lifestyle/goals", function (req, res) {
+    db.Lifestyle.create({
+      goal: req.body.goal,
+      description: req.body.description,
+      UserId: uID
+    })
+      .then(function (dbLifestyle) {
+        res.json(dbLifestyle);
+      });
+  });
 
   app.get("/api/username/lifestyle/goals", function (req, res) {
     db.Lifestyle.findAll({})
@@ -131,28 +128,46 @@ app.post("/api/username/lifestyle/goals", function (req, res) {
 
       });
   });
-
   app.post("/api/username/meal", function (req, res) {
     db.Meal.create({
       mealtime: req.body.mealtime,
       food: req.body.food,
       calorieCount: req.body.calorieCount,
-      dayCount: req.body.dayCount
+      dayCount: req.body.dayCount,
+      UserId: uID
+
     })
       .then(function (dbMeal) {
         res.json(dbMeal);
       });
   });
 
-  app.get("/api/username/meal/:UserId", function (req, res) {
-    db.Meal.findAll({})
+  app.get("/api/username/meal", function (req, res) {
+    db.Meal.findAll({
+      limit: 1,
+      where: { UserId: uID },
+      order: [['createdAt', 'DESC']],
+      include: [db.User]
+
+    })
+      .then(function (dbMeal) {
+        res.json(dbMeal);
+      });
+  });
+
+  app.get("/api/username/meal/history", function (req, res) {
+    db.Meal.findAll({
+      where: { UserId: uID },
+      order: [['createdAt', 'DESC']],
+      include: [db.User]
+
+    })
       .then(function (dbMeal) {
         res.json(dbMeal);
       });
   });
 
 };
-
 
 
 
