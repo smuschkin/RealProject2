@@ -69,23 +69,28 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/username/blog/post", function (req, res) {
-    db.Blog.create({
-      name: req.body.name,
-      title: req.body.title,
-      message: req.body.message
-    })
-      .then(function (dbBlog) {
+    //blog page
+    // Retrieve all blogs
+    app.get("/api/blog", function(req, res) {
+      db.Blog.findAll({}).then(function(dbBlogs) {
+        res.json(dbBlogs);
+      });
+    });
+  
+    // Create a new blog
+    app.post("/api/blog", function(req, res) {
+      db.Blog.create(req.body).then(function(dbBlog) {
         res.json(dbBlog);
       });
-  });
-
+    });
+ 
   app.get("/api/username/blog/post/:id", function (req, res) {
     db.Blog.findAll({})
       .then(function (dbBlog) {
         res.json(dbBlog);
       });
   });
+  //
 
   app.post("/api/username/lifestyle/goals", function (req, res) {
     db.Lifestyle.create({
