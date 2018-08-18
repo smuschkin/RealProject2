@@ -1,19 +1,21 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html>
 <head>
 
 </head>
 <body>
 
-<h2>Member Progress</h2>
+<h2><span id="standingsHeader">Member Progress</span></h2>
 
 
 
 
 
 
-      <div>
+      <div> 
+        <div id ="tableHeaders">
                         <div class="card">
+                         
                             <div class="container">
                               <div class="row">
                                 <div class="col-sm">
@@ -62,6 +64,79 @@
 
 
 </body>
+</html>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/standings.js"></script> --}}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+  <h2>
+    <span id="standingsHeader">Member Progress </span>
+  </h2>
+
+
+
+
+
+
+  <div>
+         
+                <div class="card">
+                  <div class="container">
+                    <div class="row" id="tableHeaders">
+                      <div class="col-sm">
+                        Member
+                      </div>
+                      
+                      <div class="col-sm">
+                        Group
+                      </div>
+                      <div class="col-sm">
+                        Calorie Count
+                      </div>
+                      <div class="col-sm">
+                        Goal Completed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {{#each profiles}}
+                <div class="card">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm">
+                        {{this.name}}
+                      </div>
+                     
+                      <div class="col-sm">
+                        {{this.calorieGoal}}
+                      </div>
+                      <div class="col-sm">
+                        {{this.calories}}
+                      </div>
+                      <div class="col-sm">
+                        <script>isGoalAchieved();</script>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+            </div>
+
+
+</body>
+
 </html>
 
 

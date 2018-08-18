@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "target1",
+    "password": "Dmboar#31",
     "database": "calorieapp_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Dmboar#31",
+    "password": "target1",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
