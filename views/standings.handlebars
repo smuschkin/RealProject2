@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 94%;
 
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
 </head>
 <body>
 
 <h2>Member Progress</h2>
 
-<table id="memberTable" align="center">
-  <tr>
-    <th>Member</th>
-    <th>Email</th>
-    <th>Group</th>
-    <th>Calorie Count</th>
-    <th>Goal Completed</th>
-  </tr>
-  <tr>
-    <td>Jillian Michaels</td>
-    <td>Jillian@JillsBootyGains.com</td>
-    <td>Maintain</td>
-    <td>2000</td>
-    <td>Yes</td>
-  </tr>
-  <tr>
-    <td>Peter Griffin</td>
-    <td>PGriffin@ShutUpMeg.com</td>
-    <td>Weight Loss</td>
-    <td>1750</td>
-    <td>Yes</td>
-  </tr>
-  <tr>
-    <td>Tyrod Taylor</td>
-    <td>TTaylor@ClevelandBrowns.com</td>
-    <td>Weight Gain</td>
-    <td>2500</td>
-    <td>No</td>
-  </tr>
 
-</table>
+
+
+
+
+      <div>
+                        <div class="card">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-sm">
+                                  Member
+                                </div>
+                                <div class="col-sm">
+                                  Email
+                                </div>
+                                <div class="col-sm">
+                                  Group
+                                </div>
+                               <div class="col-sm">
+                                  Calorie Count
+                                </div>
+                                <div class="col-sm">
+                                  Goal Completed
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+            {{#each profiles}}
+                        <div class="card">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-sm">
+                                  {{this.name}}
+                                </div>
+                                <div class="col-sm">
+
+                                </div>
+                                <div class="col-sm">
+                                  {{this.calorieGoal}}
+                                </div>
+                               <div class="col-sm">
+                                  {{this.calories}}
+                                </div>
+                                <div class="col-sm">
+                                  <script>isGoalAchieved();</script>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+              {{/each}}
+      </div>
+
 
 </body>
 </html>
