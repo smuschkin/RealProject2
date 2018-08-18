@@ -249,6 +249,8 @@ $(function()  {
 
     };
 
+
+/*
     var displayMealHistory = function () {
         event.preventDefault();
 
@@ -267,7 +269,7 @@ $(function()  {
         });
     }
 
-
+*/
 
 
     var showProfileData = function () {

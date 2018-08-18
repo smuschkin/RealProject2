@@ -20,14 +20,6 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/blog", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.render("blog", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
 
   app.get("/lifestyle", function (req, res) {
     db.Lifestyle.findAll({}).then(function (dbLifestyle) {
@@ -46,6 +38,15 @@ module.exports = function (app) {
       });
     });
   });
+
+  //blog
+app.get("/blog", function (req, res) {
+  db.Blog.findAll({}).then(function (dbBlogs) {
+    res.render("blog", {
+      blogs: dbBlogs
+    });
+  });
+});
 
   //standings
   app.get("/standings", function (req, res) {

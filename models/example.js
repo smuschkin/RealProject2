@@ -1,14 +1,7 @@
-var Sequelize = require("sequelize");
-
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Example = sequelize.define("Example", {
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    groupName: DataTypes.STRING,
-    calorieCount: DataTypes.INTEGER,
+    text: DataTypes.STRING,
+    description: DataTypes.TEXT
   });
   return Example;
 };
-
-
