@@ -79,6 +79,13 @@ module.exports = function (app) {
       });
   });
 
+// Standings retrieve all profiles
+  app.get("/api/standings", function(req, res) {
+    db.Profile.findAll({}).then(function(dbProfiles) {
+          res.json(dbProfiles);
+      });
+  });
+  
   app.post("/api/username/lifestyle/goals", function (req, res) {
     db.Lifestyle.create({
       goal: req.body.goal,
