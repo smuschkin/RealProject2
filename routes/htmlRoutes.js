@@ -47,11 +47,11 @@ module.exports = function (app) {
     });
   });
 
+  //standings
   app.get("/standings", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Profile.findAll({}).then(function (dbProfiles) {
       res.render("standings", {
-        msg: "Welcome!",
-        examples: dbExamples
+        profiles: dbProfiles
       });
     });
   });
