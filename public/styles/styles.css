@@ -22,13 +22,12 @@ h3 {
 
 }
 label {
-  color: darkgreen;
+  color: rgb(0, 32, 100);
   margin-left:20px;
 }
-#foodImage {
+#myPlate {
   float:right;
-  width: 150px;
-  height: 150px;
+  width: 300px;
   margin-top: -85px;
   border-radius: 8px;
 }
@@ -42,9 +41,9 @@ label {
 h2 {
   color: rgb(44, 56, 147);
 }
-.jumbotron {
+/* .jumbotron {
   margin-top: 20px;
-}
+} */
 .dropdown {
   float:center;
   margin-right: 100px;
@@ -69,9 +68,9 @@ footer {
 .jumbotron {
   padding: 20px;
   margin-bottom: 20px;
-  /* margin-left: 20px; */
+  margin-top: 20px;
   width: 700px;
-  height: 375px;
+  /* height: 70%; */
  
 }
 .display-4 {
@@ -106,8 +105,6 @@ footer {
   width: 50px;
   height: 50px;
   Padding: 5px;
-  
-  
 }
 
 .navbar-brand {
@@ -138,4 +135,18 @@ footer {
 #tableHeaders {
   color: darkorange;
   font-weight: bold;
+}
+
+#blogPhoto {
+  float: right;
+  width: 200px;
+  padding-bottom: 100px;
+}
+
+#title {
+  font-family: cursive
+}
+
+#eggTitle {
+  margin-top: -15px;
 }

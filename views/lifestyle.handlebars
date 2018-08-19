@@ -5,14 +5,12 @@
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
             <h1 class="display-4">
-              {{!--
-              <h1>{{msg}}: "Reference person's name"</h1> --}}
               <h2>My Healthy Lifestyle List</h2>
             </h1>
             <p class="lead">Enter your goals and work to accomplish them.</p>
             </h1>
             <br>
-            <img src="./js/images/checklist.png" alt="checklist" id="checklistPhoto">
+            <img src="./assets/images/checklist.png" alt="checklist" id="checklistPhoto">
             <div id="userInformation">
             </div>
           </div>
@@ -28,24 +26,28 @@
             </div>
             <button id="submit" class="btn btn-primary float-right">Submit</button>
           </form>
-          <h3>My To-Do List:</h3>
-          <ul id="to-do-list" class="list-group">
-            {{#each lifestyles}}
-            <li data-id="{{this.id}}" class="list-group-item">
-              <a href="lifestyle/{{this.id}}">{{this.text}}</a>
-            </li>
-            {{/each}}
-          </ul>
-          <br>
+        </div>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">My To-Do List:</h1>
+            <ul id="to-do-list" class="list-group">
+              {{#each lifestyles}}
+              <li data-id="{{this.id}}" class="list-group-item">
+                <a href="lifestyle/{{this.id}}">{{this.text}}</a>
+              </li>
+              {{/each}}
+              <br>
+            </ul>
+            <br>
+          </div>
         </div>
       </div>
     </div>
-    <br>
   </div>
-  <br>
-  <footer>
-    <p>Calorie Counter &copy; 2018 </p>
-  </footer>
+</div>
+<br>
+<br>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="/js/index.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

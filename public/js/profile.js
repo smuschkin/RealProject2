@@ -1,28 +1,21 @@
 
 $(function()  {
 
-
     //food api
     var foodItem = "";
     var calorieCount = 0;
-
-
 
 
     var $mealName = $("#foodInput");
     var totalDailyCal = 0;
     var $mealTime = "";
 
-
     //meal submit
     var $submitMeal = $("#sendFoodToDb");
     // show mealInfo before submit
     var $displayDailyCals = $("#dailySummaryTotalCal");
 
-
     //end meal data / api
-
-
 
     var $profileName = $("#profileName");
     var $profileAge = $("#profileAge");
@@ -36,14 +29,12 @@ $(function()  {
     var $viewProfileCalorieGoal = $("viewProfileCalorieGoal");
     var $viewProfileCalorieGoalAmount = $("#viewProfileCaloriesAmount");
 
-
     //profile form submit button
     var $profileFormSubmit = $("#profileFormSubmit");
     var $viewProfileData = $("#viewProfileData");
     var info = [];
 
     $("#sendFoodToDb").hide();
-
 
     $("#submitFood").on("click", function () {
         event.preventDefault();
@@ -63,8 +54,6 @@ $(function()  {
             }
         };
 
-
-
         $.ajax(settings).then(function (response) {
             console.log(response.branded[0]);
             console.log(response.branded[0].nf_calories);
@@ -79,8 +68,6 @@ $(function()  {
             $("#submitFood").hide();
 
         });
-
-
     });
 
 
@@ -189,7 +176,6 @@ $(function()  {
             calorieCount: calorieCount,
             dayCount: totalDailyCal + calorieCount
 
-
         };
 
 
@@ -231,11 +217,8 @@ $(function()  {
 
 
     var displayCals = function () {
-
-        console.log('samsawan HELLO EHELLO');
-
         API.displayDailyCalTotal().then(function (data) {
-            console.log(data);
+            // console.log(data);
             var foodData = {
                 totalDailyCal: data[0].dayCount
 
@@ -274,9 +257,6 @@ $(function()  {
 
     var showProfileData = function () {
         event.preventDefault();
-
-        console.log('samsawan HELLO EHELLO')
-
         API.getProfileData().then(function (data) {
             console.log(data);
             var userData = {
@@ -360,7 +340,6 @@ $(function()  {
         table.append(tableRow);
 
         for (var i = 0; i < 12; i++) {
-            console.log("hi");
             var tableColumnHeader = $("<th>" + headerName[i] + "</th>");
 
             tableRow.append(tableColumnHeader);

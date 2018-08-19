@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous"> {{!--
-    <link rel="stylesheet" type="text/css" href="assets/style.css"> --}}
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,11 +16,8 @@
 
     <nav class="navbar navbar-expand-lg navbar-light navStyle" style="background-color:#2bd6cb">
         <a class="navbar-brand" href="/">
-<<<<<<< HEAD
-             <img src="../assets/images/egg.png" width="30" height="30" class="d-inline-block align-top" alt="">Healthy Weight Challenge</a>
-=======
-            <img src="https://image.flaticon.com/icons/svg/214/214300.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Healthy Weight Challenge</a>
->>>>>>> 4540a2350480057354d39fe3b64399ee2729adef
+            <img src="https://image.flaticon.com/icons/svg/214/214300.svg" width="30" height="30" class="d-inline-block align-top" id="eggTitle"
+                alt="">Healthy Weight Challenge</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -33,29 +29,28 @@
                 <a class="nav-item nav-link active" href="/">Home
                     <span class="sr-only">(current)</span>
                 </a>
-                <a  class="nav-item nav-link" href="/profile">Profile</a>
+                <a class="nav-item nav-link" href="/profile">Profile</a>
                 <a class="nav-item nav-link" href="/lifestyle">Lifestyle</a>
                 <a class="nav-item nav-link" href="/blog">Blog</a>
                 <a class="nav-item nav-link" href="/standings">Standings</a>
             </div>
-           
         </div>
 
         <form class="form-inline my-2 my-lg-0">
 
-            <a id="logInButton" class="nav-item nav-link my-2 my-sm-0 " data-toggle="modal" data-target="#logInWindow" style="cursor: pointer">Log In</a>
+            <a id="logInButton" class="nav-item nav-link my-2 my-sm-0 " data-toggle="modal" data-target="#logInWindow" style="cursor: pointer">Log
+                In
+            </a>
 
             <div class="modal fade" id="logInWindow">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <!-- header -->
+
                         <div class="modal-header">
                             <h3 align="center" class="modal-title">Login Form</h3>
-
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-
                         </div>
-                        <!-- body -->
+
                         <div class="modal-body">
                             <form role="form">
                                 <div class="form-group form">
@@ -63,21 +58,25 @@
                                     <input id="loginPassword" type="password" class="form-control " placeholder="Password" />
                                     <div class="loader loadingSpinner"></div>
                                 </div>
-
                                 <h5 class="text-danger" id="loginAlerts"></h5>
                             </form>
                         </div>
-                        <!-- footer -->
+
                         <div class="modal-footer">
-                            <button id="loginSubmitForm" type="submit" data-dismiss="modal" class="btn btn-primary btn-block">Log In</button>
+                            <button id="loginSubmitForm" style="cursor: pointer" type="submit" data-dismiss="modal" class="btn btn-primary btn-block">Log
+                                In
+                            </button>
                             <h6>Create a New Account</h6>
-                            <button id="signUpButton" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#signUpWindow">Sign Up</button>
+                            <button id="signUpButton" style="cursor: pointer" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal"
+                                data-dismiss="modal" data-target="#signUpWindow">Sign Up
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- <button id ="signUpButton" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-target="#signUpWindow">Sign Up</button> -->
+            {{!-- <button id="signUpButton" class="nav-item nav-link my-2 my-sm-0 " data-toggle="modal" data-target="#logInWindow"
+                style="cursor: pointer">Sign Up</button> --}}
 
             <div class="modal fade" id="signUpWindow">
                 <div class="modal-dialog">
@@ -101,8 +100,6 @@
                                 </div>
                             </form>
                         </div>
-
-                        
                         <!-- footer -->
                         <div class="modal-footer">
                             <button id="signUpSubmitForm" class="btn btn-primary btn-block" data-dismiss="modal">Sign Up</button>
@@ -112,16 +109,15 @@
                 </div>
             </div>
             <a id="signOut" class="nav-item nav-link my-2 my-sm-0 ">Log Out</a>
-
         </form>
     </nav>
 
     {{{body}}}
 
 
-     <footer>
-                <p>The Healthy Weight Challenge &copy; 2018     <span id="today"></span></p>
-            </footer>
+    <footer>
+        <p>The Healthy Weight Challenge &copy; 2018 <span id="today"></span></p>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
