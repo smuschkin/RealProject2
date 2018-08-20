@@ -1,9 +1,9 @@
 var db = require("../models");
 
-  var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
+var LocalStorage = require('node-localstorage').LocalStorage;
+localStorage = new LocalStorage('./scratch');
 
- 
+
 localStorage.setItem('myFirstKey', 'myFirstValue');
 console.log(localStorage.getItem('myFirstKey'));
 
@@ -78,21 +78,21 @@ module.exports = function (app) {
     });
   });
 
-    //blog page
-    // Retrieve all blogs
-    app.get("/api/blog", function(req, res) {
-      db.Blog.findAll({}).then(function(dbBlogs) {
-        res.json(dbBlogs);
-      });
+  //blog page
+  // Retrieve all blogs
+  app.get("/api/blog", function (req, res) {
+    db.Blog.findAll({}).then(function (dbBlogs) {
+      res.json(dbBlogs);
     });
-  
-    // Create a new blog
-    app.post("/api/blog", function(req, res) {
-      db.Blog.create(req.body).then(function(dbBlog) {
-        res.json(dbBlog);
-      });
+  });
+
+  // Create a new blog
+  app.post("/api/blog", function (req, res) {
+    db.Blog.create(req.body).then(function (dbBlog) {
+      res.json(dbBlog);
     });
- 
+  });
+
   app.get("/api/username/blog/post/:id", function (req, res) {
     db.Blog.findAll({})
       .then(function (dbBlog) {
@@ -132,31 +132,50 @@ module.exports = function (app) {
   });
 
   app.get("/api/signin/:email/:password", function (req, res) {
-    db.User.findOne({ where: 
-      {
-         email: req.params.email
-         
+    db.User.findOne({
+      where:
+        {
+          email: req.params.email
 
-     } })
+
+        }
+    })
       .then(function (dbSignIn) {
         res.json(dbSignIn);
-        var password = dbSignIn.dataValues.password; 
-        if(password ===  req.params.password){
+        var password = dbSignIn.dataValues.password;
+        if (password === req.params.password) {
 
-        console.log("passwords match, works")
-        
-        console.log(dbSignIn.dataValues.password);
-        console.log(dbSignIn.dataValues.id);
-        uID = dbSignIn.dataValues.id;
-       localStorage.setItem('uID', uID);
+          console.log("passwords match, works")
+
+          console.log(dbSignIn.dataValues.password);
+          console.log(dbSignIn.dataValues.id);
+          uID = dbSignIn.dataValues.id;
+          localStorage.setItem('uID', uID);
         }
-        else{
+        else {
           console.log("passwords do NOT MATCH");
         }
 
 
       });
   });
+
+  app.get("/api/signout/", function (req, res) {
+    db.User.findAll({})
+      .then(function (dbSignout) {
+        res.json(dbSignout);
+        
+
+          console.log("user signed out")
+
+         
+          uID = null;
+        
+       
+
+      });
+  });
+
   app.post("/api/username/meal", function (req, res) {
     db.Meal.create({
       mealtime: req.body.mealtime,
