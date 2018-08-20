@@ -2,9 +2,13 @@
 // Get references to page elements
 var $blogTitle = $("#new-blog-title");
 var $blogTopic = $("#new-blog-topic");
-var $blogDescription = $("#new-blog-description");
+var $blogMessage = $("#new-blog-message");
 var $blogSubmitBtn = $("#new-blog-submit");
+
 var $blogList = $("#blog-list");
+var $topicSearchBtn = $("#topic-dropdown-select");
+var $allBlogsBtn = $("#allBlogsBtn");
+var $yourBlogsBtn = $("#yourBlogsBtn");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -24,6 +28,21 @@ var API = {
       type: "GET"
     });
   },
+
+  getBlogsByTopic: function() {
+    return $.ajax({
+      url: "api/blog/topic/" + topic,
+      type: "GET"
+    });
+  },
+
+  getBlogsByName: function() {
+    return $.ajax({
+      url: "api/blog/user/" + name,
+      type: "GET"
+    });
+  },
+
   deleteBlog: function(id) {
     return $.ajax({
       url: "api/blog/" + id,
@@ -32,34 +51,9 @@ var API = {
   }
 };
 
-// refreshBlogs gets new blogs from the db and repopulates the list
-var refreshBlogs = function() {
-  API.getBlogs().then(function(data) {
-    var $blogs = data.map(function(blog) {
-      var $a = $("<a>")
-        .text(blog.title)
-        .attr("href", "/blog/" + blog.id);
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": blog.id
-        })
-        .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
 
-      $li.append($button);
-
-      return $li;
-    });
-
-    $blogList.empty();
-    $blogList.append($blogs);
-  });
-};
 
 // handleFormSubmit is called whenever we submit a new blog
 // Save the new blog to the db and refresh the list
@@ -69,40 +63,44 @@ var handleFormSubmit = function(event) {
   var blog = {
     title: $blogTitle.val().trim(),
     topic: $blogTopic.val(),
-    description: $blogDescription.val().trim()
+    message: $blogMessage.val().trim()
   };
 
   
-  if (!(blog.title && blog.description)) {
-    alert("You must enter a title and description!");
+  if (!(blog.title && blog.message)) {
+    alert("You must enter a title and message!");
     return;
   }
   
 
   API.saveBlog(blog).then(function() {
-    refreshBlogs();
+    location.reload();
   });
 
   $blogTitle.val("");
   $blogTopic.val("");
-  $blogDescription.val("");
+  $blogMessage.val("");
 };
 
-// handleDeleteBtnClick is called when a blog's delete button is clicked
-// Remove the blog from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+//loadTopicBlogs is called when a user searches for blogs by topic
+var loadTopicBlogs = function(event) {
+  $blogList.val("");
+  var e = document.getElementById("topicDropdownSelect");
+  var topicSelect = e.options[e.selectedIndex].text;
 
-  API.deleteBlog(idToDelete).then(function() {
-    refreshBlogs();
-  });
-};
+  window.location.href = "localhost:3000/blog/topic/" + topicSelect;
+}
+
+//loadAllblogs 
+var loadAllBlogs = function(event) {
+  $blogList.val("");
+  window.location.href = "localhost:3000/blog";
+}
 
 // Add event listeners to the submit and delete buttons
 $blogSubmitBtn.on("click", handleFormSubmit);
-$blogList.on("click", ".delete", handleDeleteBtnClick);
+$topicSearchBtn.on("click", loadTopicBlogs);
+$allBlogsBtn.on("click", loadAllBlogs);
 
 
 $("div.card .card-header").on("click", function () {

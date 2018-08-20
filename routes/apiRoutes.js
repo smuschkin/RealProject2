@@ -78,7 +78,7 @@ module.exports = function (app) {
     });
   });
 
-    //blog page
+        //blog page
     // Retrieve all blogs
     app.get("/api/blog", function(req, res) {
       db.Blog.findAll({}).then(function(dbBlogs) {
@@ -92,14 +92,33 @@ module.exports = function (app) {
         res.json(dbBlog);
       });
     });
- 
-  app.get("/api/username/blog/post/:id", function (req, res) {
-    db.Blog.findAll({})
+    //find blog by id
+  app.get("/api/blog/:id", function (req, res) {
+    db.Blog.findAll({id: req.body.id})
       .then(function (dbBlog) {
         res.json(dbBlog);
       });
   });
-  //
+  //retrieve blogs by topic
+  app.get("/api/username/blog/topic/:topic", function (req, res) {
+    db.Blog.findAll({topic: req.body.topic})
+      .then(function (dbBlog) {
+        res.json(dbBlog);
+      });
+  });
+  //retrieve blogs by name
+  app.get("/api/blog/user/:name", function (req, res) {
+    db.Blog.findAll({topic: req.body.name})
+      .then(function (dbBlog) {
+        res.json(dbBlog);
+      });
+  });
+        // Standings Retrieve all profiles
+        app.get("/api/standings", function(req, res) {
+          db.Profile.findAll({}).then(function(dbProfiles) {
+            res.json(dbProfiles);
+          });
+        });
 
   app.post("/api/username/lifestyle/goals", function (req, res) {
     db.Lifestyle.create({
