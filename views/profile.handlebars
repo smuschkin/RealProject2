@@ -1,3 +1,5 @@
+<span id="greeting"></span>
+
 <div id="home">
     <div class="container">
         <div class="row">
@@ -6,7 +8,7 @@
                     <div class="container">
                         <h1 class="display-4">
                             <h2>My Profile</h2>
-                            <span id="greeting"></span>
+                            
                         </h1>
                         <p class="lead">Build your profile to track your goals.</p>
 
@@ -15,12 +17,10 @@
 
                             <img src="./assets/images/info_ball.png" alt="Fruits" id="infoImage">
 
-                            <button id="ViewProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#viewProfileData">View
-                                Profile
+                            <button id="ViewProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#viewProfileData">View Profile
                             </button>
 
-                            <button id="editProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#editProfileData">Edit
-                                Profile
+                            <button id="editProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#editProfileData">Edit Profile
                             </button>
                         </div>
                     </div>
@@ -58,8 +58,7 @@
                                     <label for="example-description">Calories/Day:</label>
                                     <h7 id="viewProfileCaloriesAmount" for="example-description"></h7>
                                 </div>
-                                <button id="editProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#editProfileData">Edit
-                                    Profile
+                                <button id="editProfile" type='button' class="btn btn-success my-2 my-sm-0" data-toggle="modal" data-dismiss="modal" data-target="#editProfileData">Edit Profile
                                 </button>
                                 <br>
                                 </form>
@@ -108,12 +107,18 @@
                         </div>
                     </div>
                 </div>
+                <img src="./assets/images/pushingImage.jpg" alt="pushing" id="pushingImage">
+
+              
 
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-4">Are You On Track?</h1>
                         <br>
-                        <img src="./assets/images/myplate.png" alt="myPlate" id="myPlate">
+                        <a href="https://www.choosemyplate.gov/">
+
+                            <img src="./assets/images/myplate.png" alt="myPlate" id="myPlate">
+                        </a>
 
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -174,63 +179,65 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+
+                        <div id="calorieSummary">
                             <br>
 
-                            <h4>Daily Summary</h4>
+                            <h4>
+                                <span id="summaryHeader">Daily Summary</span>
+                            </h4>
                             <h5 id="dailySummaryTotalCal"></h5>
                             <br>
-                            <div>
-                                <h4>Meal History</h4>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                                    View
-                                </button>
+                        </div>
+                        <h4>Meal History</h4>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            View
+                        </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div id="historyTablePlace" class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div id="historyTablePlace" class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-                        <ul id="example-list" class="list-group">
-                            {{#each userData}}
-                            <li data-id="{{this.id}}" class="list-group-item">
-                                <a href="example/{{this.id}}">{{this.text}}</a>
-                                <button class="btn btn-danger float-right delete">ｘ</button>
-                            </li>
-                            {{/each}}
-                        </ul>
-
-
-
-
                     </div>
+                 
 
                 </div>
-                <br>
-                <br>
+                <ul id="example-list" class="list-group">
+                    {{#each userData}}
+                    <li data-id="{{this.id}}" class="list-group-item">
+                        <a href="example/{{this.id}}">{{this.text}}</a>
+                        <button class="btn btn-danger float-right delete">ｘ</button>
+                    </li>
+                    {{/each}}
+                </ul>
+
+
+
+
             </div>
+
         </div>
+        <br>
+        <br>
     </div>
+</div>
+</div>
 </div>
 </div>
 

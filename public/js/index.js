@@ -257,11 +257,11 @@ var hourNow = today.getHours();
 var greeting;
 
 if (hourNow > 18) {
-    greeting = "Good Evening!";
+    greeting = "Good Evening! Did You Accomplish Your Goals Today?";
 } else if (hourNow > 11) {
-    greeting = "Good Afternoon!";
+    greeting = "Good Afternoon! Keep Moving and Eating Well";
 } else if (hourNow > 0) {
-    greeting = "Good Morning!";
+    greeting = "Good Morning! Start of a New Day and a New You";
 } else {
     greeting = "Welcome!";
 }
