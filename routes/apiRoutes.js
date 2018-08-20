@@ -122,13 +122,27 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/signin/:email", function (req, res) {
-    db.User.findOne({ where: { email: req.params.email } })
+  app.get("/api/signin/:email/:password", function (req, res) {
+    db.User.findOne({ where: 
+      {
+         email: req.params.email
+         
+
+     } })
       .then(function (dbSignIn) {
         res.json(dbSignIn);
+        var password = dbSignIn.dataValues.password; 
+        if(password ===  req.params.password){
+
+        console.log("passwords match, works")
+        
+        console.log(dbSignIn.dataValues.password);
         console.log(dbSignIn.dataValues.id);
         uID = dbSignIn.dataValues.id;
-
+        }
+        else{
+          console.log("passwords do NOT MATCH");
+        }
 
 
       });

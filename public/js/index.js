@@ -57,10 +57,10 @@ var API = {
   },
 
   //users
-  userSignIn: function (user) {
+  userSignIn: function (user, password) {
     return $.ajax({
      
-      url: "api/signin/" + user,
+      url: "api/signin/" + user +"/" + password,
       type: "GET"
 
     });
@@ -125,10 +125,20 @@ var handleLogin = function (event) {
   //   return;
   // }
 
-  API.userSignIn(login.email).then(function () {
-    console.log("welcome ");
-    console.log(login);
-    userLoggedIn = true;
+  API.userSignIn(login.email, login.password).then(function (data) {
+    if (data.password === login.password){
+      $('#logInWindow').modal('hide');
+      console.log("welcome ");
+      console.log(login);
+      userLoggedIn = true;
+    }
+    else {
+      $("#loginAlerts").html("Incorrect Email Password Combination");
+      console.log("passwords do not match, try again");
+   
+    
+    }
+
 
   });
 
