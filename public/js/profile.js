@@ -214,7 +214,13 @@ $(function()  {
         });
 
     };
-
+    function currentUser(){
+        
+          $("#logInButton").hide();
+          $("#signOut").show();
+        
+       
+      };
 
     var displayCals = function () {
         API.displayDailyCalTotal().then(function (data) {
@@ -228,6 +234,9 @@ $(function()  {
 
             totalDailyCal = foodData.totalDailyCal;
             $("#dailySummaryTotalCal").text(totalDailyCal);
+            if(data){
+                currentUser();
+            }
         });
 
     };

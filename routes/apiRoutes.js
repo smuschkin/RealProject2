@@ -1,8 +1,17 @@
 var db = require("../models");
 
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+
+ 
+localStorage.setItem('myFirstKey', 'myFirstValue');
+console.log(localStorage.getItem('myFirstKey'));
+
+
+
 module.exports = function (app) {
 
-  var uID = "";
+  var uID = null;
   exports.uID = uID;
   // Get all examples
   app.get("/api/goal", function (req, res) {
@@ -139,6 +148,7 @@ module.exports = function (app) {
         console.log(dbSignIn.dataValues.password);
         console.log(dbSignIn.dataValues.id);
         uID = dbSignIn.dataValues.id;
+       localStorage.setItem('uID', uID);
         }
         else{
           console.log("passwords do NOT MATCH");

@@ -1,7 +1,11 @@
 $(document).ready(function (){ 
   
 
+ 
 
+
+  var uID = sessionStorage.getItem('uID');
+var userNumber = parseInt(uID);
 
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
@@ -79,6 +83,7 @@ var API = {
 
 var refreshExamples = function () {
   API.getExamples().then(function (data) {
+
     var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.goal)
@@ -130,7 +135,12 @@ var handleLogin = function (event) {
       $('#logInWindow').modal('hide');
       console.log("welcome ");
       console.log(login);
+      console.log(data);
+      window.sessionStorage.setItem('uID', data.id);
       userLoggedIn = true;
+      $("#logInButton").hide();
+      $("#signOut").show();
+
     }
     else {
       $("#loginAlerts").html("Incorrect Email Password Combination");
@@ -182,6 +192,17 @@ var handleSignup = function (event) {
 };
 
 
+function currentUser(){
+  if(Number.isInteger(userNumber)){
+    $("#logInButton").hide();
+    $("#signOut").show();
+    console.log(userNumber);
+    console.log("user logged in");
+  }
+ 
+};
+
+
 var handleFormSubmit = function (event) {
   event.preventDefault();
 
@@ -226,39 +247,10 @@ var handleUpdateBtnClick = function () {
   });
 };
 
-refreshExamples();
-$submitBtn.on("click", handleFormSubmit);
-$updateBtn.on("click", ".delete", handleDeleteBtnClick);
-
-
-$signInButton.on("click", handleLogin);
-$signUpButton.on("click", handleSignup);
 
 
 
-var handleLogin = function (event) {
-  event.preventDefault();
 
-  var login = {
-    email: $signInEmail.val().trim(),
-    password: $signInPassword.val().trim()
-    
-  };
-
-  // if (!example.goal) {
-  //   alert("You must enter a goal!");
-  //   return;
-  // }
-
-  API.userSignIn(login.email).then(function () {
-    console.log("welcome ");
-    console.log(login);
-    userLoggedIn = true;
-
-  });
-
-  
-};
 
 
 
@@ -277,6 +269,17 @@ if (hourNow > 18) {
 }
 $("#greeting").html(greeting);
 $("#today").html(today);
+
+
+
+currentUser();
+refreshExamples();
+$submitBtn.on("click", handleFormSubmit);
+$updateBtn.on("click", ".delete", handleDeleteBtnClick);
+
+
+$signInButton.on("click", handleLogin);
+$signUpButton.on("click", handleSignup);
 
 
 });
