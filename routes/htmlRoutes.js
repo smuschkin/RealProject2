@@ -48,6 +48,31 @@ app.get("/blog", function (req, res) {
   });
 });
 
+app.get("/blog/:id", function (req, res) {
+  db.Blog.findOne({ where: { id: req.params.id } }).then(function (dbBlog) {
+    res.render("blog", {
+      blog: dbBlog
+    });
+  });
+});
+
+app.get("/blog/topic/:topic", function (req, res) {
+  db.Blog.findAll({ where: { topic: req.params.topic } }).then(function (dbBlog) {
+    res.render("blog", {
+      blog: dbBlog
+    });
+  });
+});
+
+app.get("/blog/user/:name", function (req, res) {
+  db.Blog.findAll({ where: { name: req.params.name } }).then(function (dbBlog) {
+    res.render("blog", {
+      blog: dbBlog
+    });
+  });
+});
+
+
   //standings
   app.get("/standings", function (req, res) {
     db.Profile.findAll({}).then(function (dbProfiles) {
