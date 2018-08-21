@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "cwru",
-    "password": "cwruassignment",
+    "username": "root",
+    "password": "target1",
     "database": "calorieapp_db",
     "host": "localhost",
     "dialect": "mysql"
